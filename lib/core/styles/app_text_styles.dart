@@ -3,7 +3,6 @@ part of '../utils/imports_manager.dart';
 
 abstract final class AppTextStyles {
   AppTextStyles._();
-
   // TextStyle generator
   static TextStyle _style(double size, FontWeight weight) =>
       TextStyle(fontSize: size, fontWeight: weight);

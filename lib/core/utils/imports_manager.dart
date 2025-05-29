@@ -12,3 +12,5 @@ part '../constants/app_sizes.dart';
 part '../styles/app_font_size.dart';
 part '../styles/app_font_weight.dart';
 part '../styles/app_text_styles.dart';
+part '../theme/app_colors.dart';
+part '../theme/app_theme.dart';
