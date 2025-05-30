@@ -18,4 +18,8 @@ abstract final class AppColors {
   static const error = Color(0xffFF0000);
   static const success = Color.fromARGB(255, 0, 179, 0);
   static const yellow = Color(0xffFFDF00);
+
+  ///---
+  static const backgroundWhite = Color(0xffFAFEFF);
+  static const greyBlue = Color(0xffB7B7B7);
 }
