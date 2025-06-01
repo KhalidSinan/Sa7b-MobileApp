@@ -65,9 +65,10 @@ class FeedbacksScreen extends StatelessWidget {
                       ],
                     ),
                   ),
+                  SizedBox(width: 8.w),
                   CircleAvatar(
-                    backgroundColor: AppColors.primary,
-                    child: Icon(Icons.chat_bubble_outline, color: AppColors.secondary),
+                    backgroundColor: AppColors.primary.withOpacity(0.1),
+                    child: Icon(Icons.chat_outlined, color: AppColors.primary),
                   ),
                 ],
               ),
