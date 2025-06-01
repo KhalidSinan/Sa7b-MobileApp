@@ -72,6 +72,8 @@ abstract final class AppSizes {
   static const double s80 = 80.0;
   static const double s100 = 100.0;
   static const double s120 = 120.0;
+  static const double s200 = 200.0;
+  static const double s250 = 250.0;
 
   // Radius
   static const double r4 = 4.0;
