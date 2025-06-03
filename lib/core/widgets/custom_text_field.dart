@@ -19,7 +19,7 @@ class CustomTextField extends StatelessWidget {
   final VoidCallback? onTap;
 
   const CustomTextField({
-    Key? key,
+    super.key,
     required this.hintText,
     this.hintStyle,
     this.textStyle,
@@ -35,7 +35,7 @@ class CustomTextField extends StatelessWidget {
     this.focusNode,
     this.readOnly = false,
     this.onTap,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -61,13 +61,15 @@ class CustomTextField extends StatelessWidget {
         style: textStyle ?? AppTextStyles.s14_medium,
         decoration: InputDecoration(
           hintText: hintText,
-          hintStyle: hintStyle ?? AppTextStyles.s14_medium.copyWith(color: AppColors.greyBlue),
+          hintStyle:
+              hintStyle ??
+              AppTextStyles.s14_medium.copyWith(color: AppColors.greyBlue),
           border: InputBorder.none,
           filled: true,
           fillColor: Colors.white,
           suffixIcon: suffixIcon,
           prefixIcon: prefixIcon,
-          contentPadding: EdgeInsets.symmetric(vertical: AppSizes.p16),
+          contentPadding: EdgeInsets.symmetric(vertical: AppSizes.p10),
         ),
       ),
     );

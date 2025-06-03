@@ -12,6 +12,7 @@ class CustomElevatedButton extends StatelessWidget {
   final double borderWidth;
   final double? width;
   final TextStyle? textStyle;
+  final double? height;
 
   const CustomElevatedButton({
     super.key,
@@ -24,25 +25,26 @@ class CustomElevatedButton extends StatelessWidget {
     this.borderWidth = 2,
     this.width,
     this.textStyle,
+    this.height,
   });
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: width,
-      height: 40.h,
+      width: width?.w,
+      height: height?.h ?? 40,
       child: ElevatedButton(
         onPressed: onPressed,
         style: ButtonStyle(
-          backgroundColor: MaterialStateProperty.all<Color>(backgroundColor),
-          elevation: MaterialStateProperty.all<double>(4),
-          shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+          backgroundColor: WidgetStateProperty.all<Color>(backgroundColor),
+          elevation: WidgetStateProperty.all<double>(4),
+          shape: WidgetStateProperty.all<RoundedRectangleBorder>(
             RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(10.0),
+              borderRadius: BorderRadius.circular(16.0),
               side: BorderSide(color: borderColor, width: borderWidth),
             ),
           ),
-          overlayColor: MaterialStateProperty.all<Color>(overlayColor),
+          overlayColor: WidgetStateProperty.all<Color>(overlayColor),
         ),
         child: Text(
           text,

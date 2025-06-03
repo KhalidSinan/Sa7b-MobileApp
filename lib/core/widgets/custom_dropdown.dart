@@ -35,23 +35,22 @@ class CustomDropdown extends StatelessWidget {
           filled: true,
           fillColor: AppColors.white,
         ),
-        icon: Icon(
-          Icons.arrow_drop_down_outlined,
-          color: AppColors.greyBlue,
-        ),
+        icon: Icon(Icons.arrow_drop_down_outlined, color: AppColors.greyBlue),
         hint: Text(
           hintText,
           style: AppTextStyles.s14_medium.copyWith(color: AppColors.greyBlue),
         ),
-        items: items
-            .map((type) => DropdownMenuItem(
-          value: type,
-          child: Text(type),
-        ))
-            .toList(),
+        items:
+            items
+                .map(
+                  (type) => DropdownMenuItem(
+                    value: type,
+                    child: Text(type, style: TextStyle(color: AppColors.grey)),
+                  ),
+                )
+                .toList(),
         onChanged: onChanged,
       ),
     );
   }
 }
-
