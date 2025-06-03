@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sa7b/core/utils/imports_manager.dart';
-import 'package:sa7b/features/send_complaint/logic/image_picker_cubit.dart';
-import 'package:sa7b/features/send_complaint/logic/image_picker_state.dart';
+import 'package:sa7b/app/features/send_complaint/logic/cubit/image_picker_cubit.dart';
+import 'package:sa7b/app/features/send_complaint/logic/states/image_picker_state.dart';
 
 class SendComplaintAddMedia extends StatelessWidget {
   const SendComplaintAddMedia({super.key});

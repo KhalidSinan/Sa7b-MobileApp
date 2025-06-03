@@ -1,4 +1,4 @@
-part of 'edit_profile_cubit.dart';
+part of '../cubit/edit_profile_cubit.dart';
 
 @immutable
 sealed class EditProfileState {}

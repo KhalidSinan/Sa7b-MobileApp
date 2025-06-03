@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sa7b/core/utils/imports_manager.dart';
 import 'package:sa7b/core/widgets/custom_elevated_button.dart';
-import 'package:sa7b/features/send_complaint/ui/widgets/send_complaint_add_media.dart';
-import 'package:sa7b/features/send_complaint/ui/widgets/send_complaint_description.dart';
-import 'package:sa7b/features/send_complaint/ui/widgets/send_complaint_title.dart';
-import 'package:sa7b/features/send_complaint/ui/widgets/send_complaint_type.dart';
+import 'package:sa7b/app/features/send_complaint/ui/widgets/send_complaint_add_media.dart';
+import 'package:sa7b/app/features/send_complaint/ui/widgets/send_complaint_description.dart';
+import 'package:sa7b/app/features/send_complaint/ui/widgets/send_complaint_title.dart';
+import 'package:sa7b/app/features/send_complaint/ui/widgets/send_complaint_type.dart';
 
 
 class SendComplaintScreen extends StatelessWidget {

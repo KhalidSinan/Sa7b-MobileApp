@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:sa7b/core/utils/imports_manager.dart';
-import 'package:sa7b/features/profile/presentation/widgets/edit_profile/profile_image_widget.dart';
+import 'package:sa7b/app/features/profile/ui/widgets/edit_profile/profile_image_widget.dart';
 
-import '../widgets/app_bar_widget.dart';
-import '../widgets/edit_profile/students_info_form.dart';
+import 'widgets/app_bar_widget.dart';
+import 'widgets/edit_profile/students_info_form.dart';
 
 class EditProfileScreen extends StatelessWidget {
   const EditProfileScreen({super.key});

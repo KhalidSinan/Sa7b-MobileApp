@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:sa7b/features/profile/presentation/screens/edit_profile_screen.dart';
+import 'package:sa7b/app/features/profile/ui/edit_profile_screen.dart';
 
 import 'routes.dart';
 

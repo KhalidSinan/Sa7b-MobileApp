@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sa7b/core/utils/imports_manager.dart';
-import 'package:sa7b/features/profile/presentation/widgets/edit_profile/acadimic_year_widget.dart';
-import 'package:sa7b/features/profile/presentation/widgets/edit_profile/experience_widget.dart';
+import 'package:sa7b/app/features/profile/ui/widgets/edit_profile/acadimic_year_widget.dart';
+import 'package:sa7b/app/features/profile/ui/widgets/edit_profile/experience_widget.dart';
 
-import '../../../../../core/widgets/custom_elevated_button.dart';
-import '../../../../../core/widgets/custom_text_field.dart';
+import '../../../../../../core/widgets/custom_elevated_button.dart';
+import '../../../../../../core/widgets/custom_text_field.dart';
 
 class StudentInfoForm extends StatefulWidget {
   const StudentInfoForm({super.key});

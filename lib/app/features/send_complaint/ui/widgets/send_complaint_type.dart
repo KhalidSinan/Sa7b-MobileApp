@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sa7b/core/utils/imports_manager.dart';
-import 'package:sa7b/features/send_complaint/data/type.dart';
+import 'package:sa7b/app/features/send_complaint/data/type.dart';
 
-import '../../../../core/widgets/custom_dropdown.dart';
+import '../../../../../core/widgets/custom_dropdown.dart';
 
 class SendComplaintType extends StatelessWidget {
   const SendComplaintType({super.key});

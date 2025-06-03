@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../../../core/utils/imports_manager.dart';
-import '../../../../../core/widgets/custom_elevated_button.dart';
+import '../../../../../../core/utils/imports_manager.dart';
+import '../../../../../../core/widgets/custom_elevated_button.dart';
 
 class ExperienceWidget extends StatefulWidget {
   const ExperienceWidget({super.key});

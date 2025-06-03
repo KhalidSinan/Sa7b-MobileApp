@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sa7b/core/utils/imports_manager.dart';
-import 'package:sa7b/features/feedbacks/data/feedbacks.dart';
+import 'package:sa7b/app/features/feedbacks/data/feedbacks.dart';
 
 class FeedbacksScreen extends StatelessWidget {
   const FeedbacksScreen({super.key});

@@ -2,7 +2,7 @@ import 'package:bloc/bloc.dart';
 import 'package:image_picker/image_picker.dart';
 import 'dart:io';
 
-import 'package:sa7b/features/send_complaint/logic/image_picker_state.dart';
+import 'package:sa7b/app/features/send_complaint/logic/states/image_picker_state.dart';
 
 class ImagePickerCubit extends Cubit<ImagePickerState> {
   ImagePickerCubit() : super(const ImagePickerState.initial());

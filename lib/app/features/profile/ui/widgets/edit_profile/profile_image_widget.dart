@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:image_picker/image_picker.dart';
 
-import '../../../../../core/utils/imports_manager.dart';
+import '../../../../../../core/utils/imports_manager.dart';
 
 class ProfileImageWidget extends StatefulWidget {
   const ProfileImageWidget({super.key});

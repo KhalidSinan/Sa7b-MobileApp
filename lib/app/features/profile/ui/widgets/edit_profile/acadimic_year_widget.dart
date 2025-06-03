@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../../../core/widgets/custom_dropdown.dart';
+import '../../../../../../core/widgets/custom_dropdown.dart';
 
 // ignore: must_be_immutable
 class AcadimicYearWidget extends StatefulWidget {
