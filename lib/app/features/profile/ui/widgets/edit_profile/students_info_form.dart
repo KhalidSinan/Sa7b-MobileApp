@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:sa7b/core/constants/app_strings.dart';
+import 'package:sa7b/core/helpers/extentions.dart';
 import 'package:sa7b/core/utils/imports_manager.dart';
 import 'package:sa7b/app/features/profile/ui/widgets/edit_profile/acadimic_year_widget.dart';
 import 'package:sa7b/app/features/profile/ui/widgets/edit_profile/experience_widget.dart';
 
+import '../../../../../../core/routing/routes.dart';
 import '../../../../../../core/widgets/custom_elevated_button.dart';
 import '../../../../../../core/widgets/custom_text_field.dart';
 
@@ -43,32 +46,39 @@ class _StudentInfoFormState extends State<StudentInfoForm> {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           _field(
-            title: "First Name",
-            hintText: "First Name",
+            title: AppStrings.firstName,
+            hintText: AppStrings.firstName,
             controller: firstNameController,
-            validator: (value) => value!.isEmpty ? 'Can\'t Be Empty' : null,
+            validator:
+                (value) => value!.isEmpty ? AppStrings.cantBeEmpty : null,
           ),
           _field(
-            title: "Middle Name",
-            hintText: "Middle Name",
+            title: AppStrings.middleName,
+            hintText: AppStrings.middleName,
             controller: middleNameController,
           ),
           _field(
-            title: "Last Name",
-            hintText: "Last Name",
+            title: AppStrings.lastName,
+            hintText: AppStrings.lastName,
             controller: lastNameController,
-            validator: (value) => value!.isEmpty ? 'Can\'t Be Empty' : null,
+            validator:
+                (value) => value!.isEmpty ? AppStrings.cantBeEmpty : null,
           ),
           ExperienceWidget(),
           SizedBox(height: 13.h),
           AcadimicYearWidget(),
           SizedBox(height: 13.h),
-          _field(title: "Bio", hintText: "Bio", controller: bioController),
           _field(
-            title: "Email",
-            hintText: "Email",
+            title: AppStrings.bio,
+            hintText: AppStrings.bio,
+            controller: bioController,
+          ),
+          _field(
+            title: AppStrings.email,
+            hintText: AppStrings.email,
             controller: emailController,
-            validator: (value) => value!.isEmpty ? 'Can\'t Be Empty' : null,
+            validator:
+                (value) => value!.isEmpty ? AppStrings.cantBeEmpty : null,
           ),
           _field(
             title: "LinkedIn",
@@ -83,10 +93,10 @@ class _StudentInfoFormState extends State<StudentInfoForm> {
               height: 56,
               onPressed: () {
                 if (formKey.currentState!.validate()) {
-                  
+                  context.pushReplacementNamed(Routes.profile);
                 }
               },
-              text: 'Edit',
+              text: AppStrings.edit,
             ),
           ),
         ],

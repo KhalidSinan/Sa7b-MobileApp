@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:sa7b/core/constants/app_strings.dart';
 
 import '../../../../../../core/utils/imports_manager.dart';
 
@@ -46,7 +47,7 @@ class _ProfileImageWidgetState extends State<ProfileImageWidget> {
         TextButton(
           onPressed: pickImage,
           child: Text(
-            "Change Profile Picture",
+            AppStrings.changeProfilePicture,
             style: TextStyle(
               fontFamily: AppFonts.Cairo,
               fontSize: AppFontSize.s12,

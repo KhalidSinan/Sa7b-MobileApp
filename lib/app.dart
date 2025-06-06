@@ -4,6 +4,7 @@ import 'package:get_it/get_it.dart';
 import 'package:sa7b/core/routing/app_router.dart';
 import 'package:sa7b/core/routing/routes.dart';
 import 'package:sa7b/core/utils/imports_manager.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 
 class Sa7bApp extends StatelessWidget {
   const Sa7bApp({super.key});
@@ -15,11 +16,18 @@ class Sa7bApp extends StatelessWidget {
       designSize: Size(375, 812),
       minTextAdapt: true,
       child: MaterialApp(
+        locale: const Locale("ar"),
+        supportedLocales: const [Locale("ar")],
+        localizationsDelegates: const [
+          GlobalMaterialLocalizations.delegate,
+          GlobalWidgetsLocalizations.delegate,
+          GlobalCupertinoLocalizations.delegate,
+        ],
         title: 'Sa7b',
         theme: AppTheme.theme,
         debugShowCheckedModeBanner: false,
         onGenerateRoute: appRouter.generateRoute,
-        initialRoute: Routes.editProfile,
+        initialRoute: Routes.profile,
       ),
     );
   }

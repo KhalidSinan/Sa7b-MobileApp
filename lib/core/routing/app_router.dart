@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sa7b/app/features/profile/ui/edit_profile_screen.dart';
+import 'package:sa7b/app/features/profile/ui/profile_screen.dart';
 
 import 'routes.dart';
 
@@ -7,9 +8,9 @@ class AppRouter {
   Route? generateRoute(RouteSettings settings) {
     switch (settings.name) {
       case Routes.editProfile:
-        return MaterialPageRoute(
-          builder: (_) => EditProfileScreen(),
-        );
+        return MaterialPageRoute(builder: (_) => EditProfileScreen());
+      case Routes.profile:
+        return MaterialPageRoute(builder: (_) => ProfileScreen(isOwner: true));
       // case Routes.loginScreen:
       //   return MaterialPageRoute(
       //     builder: (_) => BlocProvider(

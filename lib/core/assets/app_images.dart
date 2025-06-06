@@ -7,4 +7,5 @@ abstract final class AppImages {
   static const _path = 'assets/images';
   static const logo = '$_path/sa7b-logo.png';
   static const defaultProfileImage = '$_path/default_profile_image.png';
+  static const cardImage = '$_path/card_image.jfif';
 }

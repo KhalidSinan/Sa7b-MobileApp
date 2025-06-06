@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:sa7b/core/constants/app_strings.dart';
 
 import '../../../../../../core/utils/imports_manager.dart';
 import '../../../../../../core/widgets/custom_elevated_button.dart';
@@ -25,12 +26,12 @@ class _ExperienceWidgetState extends State<ExperienceWidget> {
       context: context,
       builder: (context) {
         return AlertDialog(
-          title: const Text("Experiences"),
+          title: const Text(AppStrings.experience),
           content: StatefulBuilder(
             builder:
                 (context, setState) => DropdownButtonFormField<String>(
                   value: selectedValue,
-                  hint: const Text("Select Your Experience"),
+                  hint: const Text(AppStrings.selectYourExperience),
                   items:
                       experienceOptions
                           .map(
@@ -53,7 +54,7 @@ class _ExperienceWidgetState extends State<ExperienceWidget> {
                 Navigator.pop(context);
               },
               child: const Text(
-                "Cancel",
+                AppStrings.cancel,
                 style: TextStyle(
                   color: AppColors.grey,
                   fontFamily: AppFonts.Cairo,
@@ -71,7 +72,7 @@ class _ExperienceWidgetState extends State<ExperienceWidget> {
                 Navigator.pop(context);
               },
               child: const Text(
-                "Add",
+                AppStrings.add,
                 style: TextStyle(
                   color: AppColors.grey,
                   fontFamily: AppFonts.Cairo,
@@ -93,13 +94,13 @@ class _ExperienceWidgetState extends State<ExperienceWidget> {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              const Text("Experience"),
+              const Text(AppStrings.experience),
               SizedBox(width: 13.w),
               CustomElevatedButton(
                 width: 185.w,
                 height: 53.h,
                 onPressed: _showExperienceDialog,
-                text: 'Add Experience',
+                text: AppStrings.addExperience,
                 textStyle: TextStyle(color: AppColors.grey),
                 backgroundColor: AppColors.white,
                 overlayColor: AppColors.greyBlue,

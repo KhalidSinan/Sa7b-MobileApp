@@ -14,6 +14,8 @@ abstract final class AppColors {
   static const grey = Color(0xff909090);
   static const lightGrey = Color(0xffF8FAFC);
   static const darkGrey = Color(0xff605A56);
+  static const lightBlueMist = Color(0xffECF1F3);
+  static const slateGray = Color(0xff6B7885);
 
   static const error = Color(0xffFF0000);
   static const success = Color.fromARGB(255, 0, 179, 0);

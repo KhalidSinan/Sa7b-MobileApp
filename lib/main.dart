@@ -3,6 +3,7 @@ import 'package:sa7b/app.dart';
 import 'package:sa7b/config.dart';
 
 void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   await AppConfig.configureApp();
   runApp(Sa7bApp());
 }

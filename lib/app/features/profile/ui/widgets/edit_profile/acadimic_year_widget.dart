@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:sa7b/core/constants/app_strings.dart';
 
 import '../../../../../../core/widgets/custom_dropdown.dart';
 
@@ -15,11 +16,11 @@ class _AcadimicYearWidgetState extends State<AcadimicYearWidget> {
   String? selectedValue;
 
   final List<String> acadimicYearOptions = [
-    'First Year',
-    'Second Year',
-    'Third Year',
-    'Fourth Year',
-    'Fifth Year',
+    AppStrings.firstYear,
+    AppStrings.secondYear,
+    AppStrings.thirdYear,
+    AppStrings.fourthYear,
+    AppStrings.fifthYear,
   ];
 
   @override
@@ -27,7 +28,7 @@ class _AcadimicYearWidgetState extends State<AcadimicYearWidget> {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: [
-        Text("Acadimic Year"),
+        Text(AppStrings.acadimicYear),
         SizedBox(width: 13.w),
         SizedBox(
           width: 205.w,
@@ -35,7 +36,7 @@ class _AcadimicYearWidgetState extends State<AcadimicYearWidget> {
           child: CustomDropdown(
             items: acadimicYearOptions,
             value: selectedValue,
-            hintText: 'Acadimic Year',
+            hintText: AppStrings.acadimicYear,
             onChanged: (val) {
               setState(() {
                 selectedValue = val;

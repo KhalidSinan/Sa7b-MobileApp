@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sa7b/core/constants/app_strings.dart';
 import 'package:sa7b/core/utils/imports_manager.dart';
 import 'package:sa7b/app/features/profile/ui/widgets/edit_profile/profile_image_widget.dart';
 
@@ -13,7 +14,7 @@ class EditProfileScreen extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         backgroundColor: AppColors.lightGrey,
-        appBar: appBarWidget(title: "Edit Profile Info"),
+        appBar: appBarWidget(title: AppStrings.editProfileInfo),
         body: SizedBox(
           height: double.infinity,
           width: double.infinity,
