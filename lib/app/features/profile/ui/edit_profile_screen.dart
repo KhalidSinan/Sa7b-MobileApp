@@ -14,7 +14,10 @@ class EditProfileScreen extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         backgroundColor: AppColors.lightGrey,
-        appBar: appBarWidget(title: AppStrings.editProfileInfo),
+        appBar: appBarWidget(
+          title: AppStrings.editProfileInfo,
+          context: context,
+        ),
         body: SizedBox(
           height: double.infinity,
           width: double.infinity,

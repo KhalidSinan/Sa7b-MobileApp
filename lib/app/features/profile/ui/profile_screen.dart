@@ -6,7 +6,7 @@ import '../../../../core/constants/app_strings.dart';
 import '../../../../core/helpers/spacing.dart';
 import '../../../../core/utils/imports_manager.dart';
 import 'widgets/app_bar_widget.dart';
-import 'widgets/profile/certificate.dart';
+import 'widgets/profile/certificates.dart';
 import 'widgets/profile/info_card.dart';
 import 'widgets/profile/posts.dart';
 
@@ -19,7 +19,7 @@ class ProfileScreen extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         backgroundColor: AppColors.lightGrey,
-        appBar: appBarWidget(title: AppStrings.profile),
+        appBar: appBarWidget(title: AppStrings.profile, context: context),
         body: SizedBox(
           height: double.infinity,
           width: double.infinity,
@@ -31,7 +31,7 @@ class ProfileScreen extends StatelessWidget {
                 experiences(),
                 InfoCard(isOwner: isOwner),
                 SizedBox(height: 270.h, child: Posts(isOwner: isOwner)),
-                SizedBox(height: 270.h, child: Certificate(isOwner: isOwner)),
+                SizedBox(height: 270.h, child: Certificates(isOwner: isOwner)),
               ],
             ),
           ),

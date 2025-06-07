@@ -1,9 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:sa7b/core/helpers/extentions.dart';
+import 'package:sa7b/core/helpers/spacing.dart';
 
 import '../../../../../core/utils/imports_manager.dart';
 
-PreferredSize appBarWidget({required String title}) {
+PreferredSize appBarWidget({
+  required String title,
+  required BuildContext context,
+}) {
+  final canPop = ModalRoute.of(context)?.canPop ?? false;
   return PreferredSize(
     preferredSize: Size.fromHeight(56.h),
     child: Container(
@@ -11,8 +17,8 @@ PreferredSize appBarWidget({required String title}) {
       decoration: BoxDecoration(
         color: AppColors.white,
         border: Border(
-          top: BorderSide(color: AppColors.greyBlue, width: 1),
-          bottom: BorderSide(color: AppColors.greyBlue, width: 1),
+          top: BorderSide(color: AppColors.greyBlue, width: 1.w),
+          bottom: BorderSide(color: AppColors.greyBlue, width: 1.w),
         ),
       ),
       alignment: Alignment.center,
@@ -20,14 +26,18 @@ PreferredSize appBarWidget({required String title}) {
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          // IconButton(
-          //   onPressed: () {},
-          //   icon: Icon(
-          //     Icons.arrow_back_ios_new,
-          //     color: AppColors.greyBlue,
-          //     size: 17.dm,
-          //   ),
-          // ),
+          if (canPop)
+            IconButton(
+              onPressed: () {
+                context.pop();
+              },
+              icon: Icon(
+                Icons.arrow_back_ios_new,
+                color: AppColors.greyBlue,
+                size: 17.dm,
+              ),
+            ),
+          if (!canPop) horizontalSpace(15),
           Text(
             title,
             style: TextStyle(

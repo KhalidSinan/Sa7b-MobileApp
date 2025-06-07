@@ -16,8 +16,8 @@ class Sa7bApp extends StatelessWidget {
       designSize: Size(375, 812),
       minTextAdapt: true,
       child: MaterialApp(
-        locale: const Locale("ar"),
-        supportedLocales: const [Locale("ar")],
+        locale: AppLocales.ar,
+        supportedLocales: const [AppLocales.ar],
         localizationsDelegates: const [
           GlobalMaterialLocalizations.delegate,
           GlobalWidgetsLocalizations.delegate,

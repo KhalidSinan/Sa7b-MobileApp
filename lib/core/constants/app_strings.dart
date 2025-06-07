@@ -36,4 +36,17 @@ class AppStrings {
   static const String cancel = "الغاء";
   static const String delete = "حذف";
   static const String editInfo = "تعديل المعلومات";
+
+  //posts or certificates
+  static const String search = "البحث";
+  static const String selecetSubject = "اختر المادة";
+  static const String done = "تم";
+
+  //add post or certificates
+  static const String addCertificate = "اضافة شهادة";
+  static const String addPost = "اضافة منشور";
+  static const String subjectName = "اسم المادة";
+  static const String writeWhateverYouWant = "اكتب ما تريد";
+  static const String addMedia = "اضافة وسائط";
+  static const String publishing = "نشر";
 }

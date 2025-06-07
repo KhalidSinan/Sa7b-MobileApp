@@ -8,7 +8,6 @@ class PostOrCertificateCard extends StatelessWidget {
   final String userName;
   final String date;
   final String content;
-  final IconData profileImage;
   final void Function()? onShowPopupMenu;
   final bool isOwner;
 
@@ -17,7 +16,6 @@ class PostOrCertificateCard extends StatelessWidget {
     required this.userName,
     required this.date,
     required this.content,
-    required this.profileImage,
     required this.onShowPopupMenu,
     required this.isOwner,
   });

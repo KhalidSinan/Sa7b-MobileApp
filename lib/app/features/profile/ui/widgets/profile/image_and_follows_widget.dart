@@ -27,7 +27,6 @@ class _ImageAndFollowsWidgetState extends State<ImageAndFollowsWidget> {
           backgroundColor: AppColors.black,
           backgroundImage: AssetImage(AppImages.defaultProfileImage),
         ),
-        horizontalSpace(20),
         Column(
           children: [
             Text(
@@ -62,7 +61,11 @@ class _ImageAndFollowsWidgetState extends State<ImageAndFollowsWidget> {
                 text: isFollowing ? AppStrings.followed : AppStrings.follows,
                 backgroundColor:
                     isFollowing ? AppColors.grey : AppColors.primary,
-                textColor: AppColors.white,
+                textStyle: TextStyle(
+                  fontSize: AppFontSize.s14,
+                  fontWeight: AppFontWeight.medium,
+                  color: AppColors.white,
+                ),
               ),
             verticalSpace(10),
           ],
