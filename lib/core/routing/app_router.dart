@@ -1,0 +1,44 @@
+import 'package:flutter/material.dart';
+import 'package:sa7b/app/features/profile/ui/edit_profile_screen.dart';
+import 'package:sa7b/app/features/subjects/ui/my_subjects.dart';
+
+import 'routes.dart';
+
+class AppRouter {
+  Route? generateRoute(RouteSettings settings) {
+    switch (settings.name) {
+      case Routes.mySubject:
+        return MaterialPageRoute(
+          builder: (_)=> MySubjectScreen());
+
+      // case Routes.editProfile:
+      //   return MaterialPageRoute(
+      //     builder: (_) => EditProfileScreen(),
+      //   );
+        
+      // case Routes.loginScreen:
+      //   return MaterialPageRoute(
+      //     builder: (_) => BlocProvider(
+      //       create: (context) => getIt<LoginCubit>(),
+      //       child: const LoginScreen(),
+      //     ),
+      //   );
+      // case Routes.homeScreen:
+      //   return MaterialPageRoute(
+      //     builder: (_) => BlocProvider(
+      //       create: (context) => getIt<HomeCubit>()..sspecializationData(),
+      //       child: HomeScreen(),
+      //     ),
+      //   );
+      default:
+        return null;
+      //  MaterialPageRoute(
+      //   builder: (_) => Scaffold(
+      //     body: Center(
+      //       child: Text('No Routes'),
+      //     ),
+      //   ),
+      // );
+    }
+  }
+}
