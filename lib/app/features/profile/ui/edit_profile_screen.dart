@@ -7,7 +7,11 @@ import 'widgets/app_bar_widget.dart';
 import 'widgets/edit_profile/students_info_form.dart';
 
 class EditProfileScreen extends StatelessWidget {
-  const EditProfileScreen({super.key});
+  // final String email;
+  const EditProfileScreen({
+    super.key,
+    // required this.email
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +29,10 @@ class EditProfileScreen extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.center,
-              children: [ProfileImageWidget(), StudentInfoForm()],
+              children: [
+                ProfileImageWidget(),
+                StudentInfoForm(email: 'georgenasser2002@gmail.com'),
+              ],
             ),
           ),
         ),

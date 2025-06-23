@@ -1,15 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:sa7b/app/features/profile/logic/cubit/profile/profile_cubit.dart';
 import 'package:sa7b/core/constants/app_strings.dart';
 import 'package:sa7b/core/helpers/extentions.dart';
+import 'package:sa7b/core/helpers/spacing.dart';
 import 'package:sa7b/core/routing/routes.dart';
 import 'package:sa7b/core/utils/imports_manager.dart';
+import 'package:sa7b/core/widgets/loading_widget.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class InfoCard extends StatelessWidget {
   final bool isOwner;
   const InfoCard({super.key, required this.isOwner});
-  final String myLink = "linkedin.com/in/george-al-nasser-689542258";
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -25,17 +28,54 @@ class InfoCard extends StatelessWidget {
               color: AppColors.lightBlueMist,
               borderRadius: BorderRadius.circular(16.r),
             ),
-            child: Column(
-              children: [
-                infoRow(label: AppStrings.socialMedia, value: myLink),
-                SizedBox(height: 8),
-                infoRow(label: AppStrings.acadimicYear, value: "Fourth"),
-                SizedBox(height: 8),
-                infoRow(
-                  label: AppStrings.college,
-                  value: "Informatics Technology Engineering",
-                ),
-              ],
+            child: BlocBuilder<ProfileCubit, ProfileState>(
+              builder:
+                  (context, state) => state.maybeWhen(
+                    loading: () => const LoadingWidget(),
+                    success:
+                        (userData) => Column(
+                          children: [
+                            infoRow(
+                              label: AppStrings.linkedIn,
+                              value:
+                                  userData.userData.linkedInAccount.toString(),
+                            ),
+                            verticalSpace(8),
+                            infoRow(
+                              label: AppStrings.facebook,
+                              value:
+                                  userData.userData.facebookAccount.toString(),
+                            ),
+                            verticalSpace(8),
+                            infoRow(
+                              label: AppStrings.gitHub,
+                              value: userData.userData.githubAccount.toString(),
+                            ),
+                            verticalSpace(8),
+                            infoRow(
+                              label: AppStrings.xAccount,
+                              value: userData.userData.xAccount.toString(),
+                            ),
+                            verticalSpace(8),
+                            infoRow(
+                              label: AppStrings.acadimicYear,
+                              value: userData.userData.academicYear!.year.toString(),
+                            ),
+                            verticalSpace(8),
+                            infoRow(
+                              label: AppStrings.college,
+                              value: userData.userData.collegeName.toString(),
+                            ),
+                          ],
+                        ),
+                    error:
+                        (error) => SizedBox(
+                          child: Center(child: Text(error.toString())),
+                        ),
+                    orElse: () {
+                      return SizedBox(child: Text('no data to view'));
+                    },
+                  ),
             ),
           ),
           if (isOwner)
@@ -45,7 +85,7 @@ class InfoCard extends StatelessWidget {
     );
   }
 
-  Widget infoRow({required String label, required String value}) {
+  Widget infoRow({@required String? label, required String value}) {
     bool isUrl(String text) {
       final urlPattern = RegExp(
         r'^(https?:\/\/)?([\w\-]+\.)+[\w]{2,}(\/\S*)?$',
@@ -99,7 +139,7 @@ class InfoCard extends StatelessWidget {
       children: [
         Expanded(child: buildValueWidget(value)),
         Text(
-          label,
+          label ?? "No Account Found",
           style: TextStyle(
             fontFamily: AppFonts.Cairo,
             fontSize: AppFontSize.s12,

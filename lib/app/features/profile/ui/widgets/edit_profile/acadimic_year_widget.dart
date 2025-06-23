@@ -4,9 +4,10 @@ import 'package:sa7b/core/constants/app_strings.dart';
 
 import '../../../../../../core/widgets/custom_dropdown.dart';
 
-// ignore: must_be_immutable
 class AcadimicYearWidget extends StatefulWidget {
-  const AcadimicYearWidget({super.key});
+  final void Function(String) onYearSelected;
+
+  const AcadimicYearWidget({super.key, required this.onYearSelected});
 
   @override
   State<AcadimicYearWidget> createState() => _AcadimicYearWidgetState();
@@ -40,11 +41,29 @@ class _AcadimicYearWidgetState extends State<AcadimicYearWidget> {
             onChanged: (val) {
               setState(() {
                 selectedValue = val;
+                widget.onYearSelected(_convertYearToNumber(val!));
               });
             },
           ),
         ),
       ],
     );
+  }
+
+  String _convertYearToNumber(String yearText) {
+    switch (yearText) {
+      case AppStrings.firstYear:
+        return '1';
+      case AppStrings.secondYear:
+        return '2';
+      case AppStrings.thirdYear:
+        return '3';
+      case AppStrings.fourthYear:
+        return '4';
+      case AppStrings.fifthYear:
+        return '5';
+      default:
+        return '1';
+    }
   }
 }

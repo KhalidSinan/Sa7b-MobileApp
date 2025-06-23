@@ -6,6 +6,7 @@ class CustomDropdown extends StatelessWidget {
   final String? value;
   final String hintText;
   final ValueChanged<String?> onChanged;
+  final FormFieldValidator<String>? validator; // ✅ أضف هذا السطر
 
   const CustomDropdown({
     super.key,
@@ -13,6 +14,7 @@ class CustomDropdown extends StatelessWidget {
     required this.value,
     required this.hintText,
     required this.onChanged,
+    this.validator,
   });
 
   @override
@@ -50,6 +52,7 @@ class CustomDropdown extends StatelessWidget {
                 )
                 .toList(),
         onChanged: onChanged,
+        validator: validator,
       ),
     );
   }

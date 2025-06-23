@@ -36,6 +36,11 @@ class AppStrings {
   static const String cancel = "الغاء";
   static const String delete = "حذف";
   static const String editInfo = "تعديل المعلومات";
+  static const String linkedIn = "حساب Linked In";
+  static const String facebook = "حساب Facebook";
+  static const String gitHub = "حساب GitHub";
+  static const String xAccount = "حساب X";
+  static const String editPost = "تعديل المنشور";
 
   //posts or certificates
   static const String search = "البحث";
@@ -46,7 +51,12 @@ class AppStrings {
   static const String addCertificate = "اضافة شهادة";
   static const String addPost = "اضافة منشور";
   static const String subjectName = "اسم المادة";
+  static const String visibilityName = "من يمكنه مشاهدته";
   static const String writeWhateverYouWant = "اكتب ما تريد";
   static const String addMedia = "اضافة وسائط";
   static const String publishing = "نشر";
+
+  // my token
+  static const String token =
+      "3|FXb8siBvthbhbM5kPty6PPZIrOMiOTdQcw4OvTPvd1e86acd";
 }

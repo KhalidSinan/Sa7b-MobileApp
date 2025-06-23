@@ -47,6 +47,7 @@ class Certificates extends StatelessWidget {
                     );
                   },
                   isOwner: isOwner,
+                  attachmentPath: AppImages.defaultProfileImage,
                 ),
             itemCount: 2,
           ),

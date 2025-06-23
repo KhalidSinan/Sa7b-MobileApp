@@ -6,7 +6,9 @@ import '../../../../../../core/utils/imports_manager.dart';
 import '../../../../../../core/widgets/custom_elevated_button.dart';
 
 class ExperienceWidget extends StatefulWidget {
-  const ExperienceWidget({super.key});
+  final void Function(List<String>) onExperiencesChanged;
+
+  const ExperienceWidget({super.key, required this.onExperiencesChanged});
 
   @override
   State<ExperienceWidget> createState() => _ExperienceWidgetState();
@@ -14,9 +16,18 @@ class ExperienceWidget extends StatefulWidget {
 
 class _ExperienceWidgetState extends State<ExperienceWidget> {
   final List<String> experienceOptions = [
-    'خبرة في تطوير البرمجيات',
-    'خبرة في التصميم',
-    'خبرة في الاختبار',
+    'flutter',
+    'laravel',
+    'react js',
+    'node js',
+    'express',
+    'c++',
+    'java',
+    'DevOps',
+    'ui ux',
+    'Kotlin',
+    'c#',
+    'Mobile FullStack',
   ];
   final List<String> selectedExperiences = [];
 
@@ -67,6 +78,7 @@ class _ExperienceWidgetState extends State<ExperienceWidget> {
                     !selectedExperiences.contains(selectedValue)) {
                   setState(() {
                     selectedExperiences.add(selectedValue!);
+                    widget.onExperiencesChanged(selectedExperiences);
                   });
                 }
                 Navigator.pop(context);
@@ -120,6 +132,7 @@ class _ExperienceWidgetState extends State<ExperienceWidget> {
                       onDeleted: () {
                         setState(() {
                           selectedExperiences.remove(exp);
+                          widget.onExperiencesChanged(selectedExperiences);
                         });
                       },
                     ),
