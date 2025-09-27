@@ -10,11 +10,12 @@ class SpeakUpScreen extends StatelessWidget {
     return Scaffold(
         appBar: AppBar(
           backgroundColor: AppColors.backgroundWhite,
-          // leading: ,
           title: Text(
-            "قولها ولا تخاف",
-            style: AppTextStyles.s16_medium.copyWith(color: AppColors.primary),
-          ),
+            textAlign: TextAlign.end,
+              "قولها ولا تخاف",
+              style: AppTextStyles.s16_medium.copyWith(color: AppColors.primary),
+            ),
+          centerTitle: true,
         ),
         body: ListView(
           children: [
