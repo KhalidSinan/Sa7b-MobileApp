@@ -1,3 +1,8 @@
+import 'package:json_annotation/json_annotation.dart';
+
+part 'update_guidance_model.g.dart';
+
+@JsonSerializable()
 class UpdateGuidanceModel {
   final int id;
   final String title;
@@ -11,9 +16,8 @@ class UpdateGuidanceModel {
     required this.type,
   });
 
-  Map<String, dynamic> toJson() => {
-        'title': title,
-        'content': content,
-        'type': type,
-      };
+  factory UpdateGuidanceModel.fromJson(Map<String, dynamic> json) =>
+      _$UpdateGuidanceModelFromJson(json);
+
+  Map<String, dynamic> toJson() => _$UpdateGuidanceModelToJson(this);
 }

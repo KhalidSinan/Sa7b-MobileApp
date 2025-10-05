@@ -3,7 +3,7 @@ import 'package:sa7b/app/features/academic_guidens/subject_gudidance/data/model/
 import 'package:sa7b/app/features/academic_guidens/subject_gudidance/ui/widgets/post_card.dart';
 
 class PostsTabView extends StatelessWidget {
-  final List<CourseGuidanceModel> posts;
+  final List<SubjectGuidensModel> posts;
   final bool isMyPosts;
   final Map<int, int> localVotes;
   final ValueChanged<int> Function(int) onVoteUpdated;
@@ -18,7 +18,7 @@ class PostsTabView extends StatelessWidget {
     required this.onUpdated,
   });
 
-  List<CourseGuidanceModel> filterPosts(String type) =>
+  List<SubjectGuidensModel> filterPosts(String type) =>
       posts.where((post) => post.type == type).toList();
 
   @override
@@ -32,7 +32,7 @@ class PostsTabView extends StatelessWidget {
     );
   }
 
-  Widget buildPostsList(List<CourseGuidanceModel> postsList) {
+  Widget buildPostsList(List<SubjectGuidensModel> postsList) {
     if (postsList.isEmpty) return const Center(child: Text("لا يوجد منشورات"));
 
     return ListView.builder(

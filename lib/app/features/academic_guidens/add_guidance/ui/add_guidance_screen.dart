@@ -16,7 +16,7 @@ class _AddGuidancePageState extends State<AddGuidancePage> {
   final _formKey = GlobalKey<FormState>();
 
   String? selectedType;
-  final List<String> types = ['theoretical', 'practical','benefit'];
+  final List<String> types = ['theoretical', 'practical', 'benefit'];
 
   final TextEditingController titleController = TextEditingController();
   final TextEditingController linkController = TextEditingController();
@@ -32,12 +32,21 @@ class _AddGuidancePageState extends State<AddGuidancePage> {
 
   void _submit(BuildContext context) {
     if (_formKey.currentState!.validate()) {
+      // 🔹 نحول النص لمصفوفة روابط ونضيف https:// تلقائيًا إذا مفقودة
+      final List<String> links = linkController.text
+          .split(',')
+          .map((e) => e.trim())
+          .where((e) => e.isNotEmpty)
+          .map((e) => e.startsWith('http') ? e : 'https://$e')
+          .toList();
+
       final model = AcademicGuidanceModel(
-          courseId: 2,
-          content: contentController.text,
-          type: selectedType ?? "theoretical",
-          title: titleController.text,
-          link: linkController.text);
+        courseId: 2,
+        content: contentController.text,
+        type: selectedType ?? "theoretical",
+        title: titleController.text,
+        links: links,
+      );
 
       context.read<AcademicGuidanceCubit>().addGuidance(model);
     }
@@ -67,7 +76,6 @@ class _AddGuidancePageState extends State<AddGuidancePage> {
               ScaffoldMessenger.of(context).showSnackBar(
                 const SnackBar(content: Text("تم الإضافة بنجاح")),
               );
-              // ممكن تفضي الحقول بعد الإضافة
               titleController.clear();
               linkController.clear();
               contentController.clear();
@@ -104,7 +112,7 @@ class _AddGuidancePageState extends State<AddGuidancePage> {
                     ),
                     const SizedBox(height: 30),
                     AddGuidanceWidgets.labeledTextField(
-                      label: 'ادخل الروابط',
+                      label: 'ادخل الروابط (افصل بين الروابط بفاصلة ,)',
                       controller: linkController,
                       validator: (value) => value == null || value.isEmpty
                           ? 'يرجى إدخال الروابط'
@@ -122,7 +130,7 @@ class _AddGuidancePageState extends State<AddGuidancePage> {
                         ? const CircularProgressIndicator()
                         : AddGuidanceWidgets.submitButton(
                             onPressed: () => _submit(context),
-                            text: "رشــنا",
+                            text: "ارشدنا",
                           ),
                   ],
                 ),

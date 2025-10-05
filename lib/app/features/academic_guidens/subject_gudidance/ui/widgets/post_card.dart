@@ -5,7 +5,7 @@ import 'package:sa7b/app/features/academic_guidens/subject_gudidance/ui/widgets/
 import 'package:sa7b/app/features/academic_guidens/subject_gudidance/ui/widgets/post_voting.dart';
 
 class PostCard extends StatelessWidget {
-  final CourseGuidanceModel post;
+  final SubjectGuidensModel post;
   final bool isMyPost;
   final int initialVotes;
   final ValueChanged<int>? onVoteUpdated;

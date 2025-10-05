@@ -6,7 +6,7 @@ import 'package:sa7b/core/services/api_services.dart';
 import 'package:sa7b/app/features/academic_guidens/subject_gudidance/data/model/subject_guidens_model.dart';
 
 abstract class DateFilterService {
-  Future<List<CourseGuidanceModel>> fetchPostsByDate({
+  Future<List<SubjectGuidensModel>> fetchPostsByDate({
     required String startDate,
     required String endDate,
   });
@@ -17,7 +17,7 @@ class DateFilterRemoteDatasourceImpl implements DateFilterService {
   final FlutterSecureStorage _secureStorage = const FlutterSecureStorage();
 
   @override
-  Future<List<CourseGuidanceModel>> fetchPostsByDate({
+  Future<List<SubjectGuidensModel>> fetchPostsByDate({
     required String startDate,
     required String endDate,
   }) async {
@@ -35,7 +35,7 @@ class DateFilterRemoteDatasourceImpl implements DateFilterService {
 
       if (response["status"] == "success") {
         final data = response["data"] as List;
-        return data.map((e) => CourseGuidanceModel.fromJson(e)).toList();
+        return data.map((e) => SubjectGuidensModel.fromJson(e)).toList();
       } else {
         throw NetworkExceptions.defaultError(
           response["message"] ?? "فشل في جلب البيانات.",

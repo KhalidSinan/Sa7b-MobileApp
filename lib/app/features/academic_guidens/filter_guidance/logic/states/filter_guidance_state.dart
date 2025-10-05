@@ -8,7 +8,7 @@ class DateFilterInitial extends DateFilterState {}
 class DateFilterLoading extends DateFilterState {}
 
 class DateFilterLoaded extends DateFilterState {
-  final List<CourseGuidanceModel> posts;
+  final List<SubjectGuidensModel> posts;
   DateFilterLoaded(this.posts);
 }
 

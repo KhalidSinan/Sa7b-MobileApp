@@ -3,15 +3,14 @@ class AcademicGuidanceModel {
   final String content;
   final String type;
   final String title;
-  final String link;
+  final List<String> links; // بدل link واحد
 
-  AcademicGuidanceModel(
-    {
+  AcademicGuidanceModel({
     required this.courseId,
     required this.content,
     required this.type,
     required this.title,
-    required this.link
+    required this.links,
   });
 
   Map<String, dynamic> toJson() {
@@ -20,7 +19,7 @@ class AcademicGuidanceModel {
       'content': content,
       'type': type,
       'title': title,
-      'links[0]': link,
+      'links': links, // ابعت المصفوفة كاملة
     };
   }
 }

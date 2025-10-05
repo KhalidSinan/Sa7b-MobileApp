@@ -7,7 +7,7 @@ class MyPostsInitial extends MyPostsState {}
 class MyPostsLoading extends MyPostsState {}
 
 class MyPostsLoaded extends MyPostsState {
-  final List<CourseGuidanceModel> posts;
+  final List<SubjectGuidensModel> posts;
   MyPostsLoaded(this.posts);
 }
 

@@ -3,7 +3,7 @@ import 'package:sa7b/app/features/academic_guidens/subject_gudidance/data/model/
 import 'package:sa7b/core/constants/Apis.dart';
 
 class PostCardHeader extends StatelessWidget {
-  final CourseGuidanceModel post;
+  final SubjectGuidensModel post;
   final bool isMyPost;
   final VoidCallback? onOptionsPressed;
 

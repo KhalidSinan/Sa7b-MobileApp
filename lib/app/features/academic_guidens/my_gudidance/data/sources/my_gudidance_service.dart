@@ -6,7 +6,7 @@ import 'package:sa7b/core/services/api_services.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 abstract class MyPostsRemoteDatasource {
-  Future<List<CourseGuidanceModel>> getMyPosts();
+  Future<List<SubjectGuidensModel>> getMyPosts();
 }
 
 class MyPostsRemoteDatasourceImpl implements MyPostsRemoteDatasource {
@@ -14,7 +14,7 @@ class MyPostsRemoteDatasourceImpl implements MyPostsRemoteDatasource {
   final ApiServices _api = GetIt.I<ApiServices>();
 
   @override
-  Future<List<CourseGuidanceModel>> getMyPosts() async {
+  Future<List<SubjectGuidensModel>> getMyPosts() async {
     final token = await _secureStorage.read(key: 'access_token');
 
     try {
@@ -26,8 +26,8 @@ class MyPostsRemoteDatasourceImpl implements MyPostsRemoteDatasource {
         );
       }
 
-      final List<CourseGuidanceModel> list = (response["data"] as List)
-          .map((item) => CourseGuidanceModel.fromJson(item))
+      final List<SubjectGuidensModel> list = (response["data"] as List)
+          .map((item) => SubjectGuidensModel.fromJson(item))
           .toList();
 
       return list;

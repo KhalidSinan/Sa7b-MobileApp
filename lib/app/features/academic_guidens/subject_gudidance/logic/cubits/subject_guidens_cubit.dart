@@ -6,7 +6,7 @@ import 'package:sa7b/app/features/academic_guidens/subject_gudidance/logic/state
 class CourseGuidanceCubit extends Cubit<CourseGuidanceState> {
   final AcademicGuidanceRemoteDatasource datasource;
 
-  List<CourseGuidanceModel> allPosts = []; // نخزن كل البوستات
+  List<SubjectGuidensModel> allPosts = []; // نخزن كل البوستات
 
   CourseGuidanceCubit(this.datasource) : super(CourseGuidanceInitial());
 

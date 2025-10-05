@@ -8,7 +8,7 @@ class CourseGuidanceInitial extends CourseGuidanceState {}
 class CourseGuidanceLoading extends CourseGuidanceState {}
 
 class CourseGuidanceLoaded extends CourseGuidanceState {
-  final List<CourseGuidanceModel> posts;
+  final List<SubjectGuidensModel> posts;
   CourseGuidanceLoaded(this.posts);
 }
 
