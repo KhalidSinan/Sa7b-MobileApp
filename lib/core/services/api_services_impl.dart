@@ -8,10 +8,11 @@ import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
 late Map<String, dynamic> _headers;
 
-Future<void> setHeaders() async {
+Future<void> setHeaders({String? token}) async {
   _headers = {
     "Accept": Headers.jsonContentType,
     "Accept-Timezone": DateTime.now().timeZoneName,
+    if (token != null) 'Authorization': 'Bearer $token',
   };
 }
 
@@ -51,9 +52,10 @@ class ApiServicesImpl implements ApiServices {
     String path, {
     Map<String, dynamic>? queryParams,
     Map<String, dynamic>? body,
+    String? token,
   }) async {
     try {
-      await setHeaders();
+      await setHeaders(token: token);
       final response = await _dio.delete(
         path,
         queryParameters: queryParams,
@@ -70,10 +72,10 @@ class ApiServicesImpl implements ApiServices {
   Future<dynamic> get(
     String path, {
     Map<String, String>? queryParams,
-    bool? hasToken,
+    String? token,
   }) async {
     try {
-      await setHeaders();
+      await setHeaders(token: token);
       final response = await _dio.get(
         path,
         queryParameters: queryParams,
@@ -91,11 +93,10 @@ class ApiServicesImpl implements ApiServices {
     Map<String, dynamic>? queryParams,
     Map<String, dynamic>? body,
     FormData? formData,
-    bool? hasToken,
+    String? token,
   }) async {
     try {
-      await setHeaders();
-
+      await setHeaders(token: token);
       final response = await _dio.post(
         path,
         queryParameters: queryParams,
@@ -117,10 +118,10 @@ class ApiServicesImpl implements ApiServices {
     Map<String, dynamic>? queryParams,
     Map<String, dynamic>? body,
     FormData? formData,
-    bool? hasToken,
+    String? token,
   }) async {
     try {
-      await setHeaders();
+      await setHeaders(token: token);
       final response = await _dio.put(
         path,
         queryParameters: queryParams,
@@ -142,10 +143,10 @@ class ApiServicesImpl implements ApiServices {
     Map<String, dynamic>? queryParams,
     Map<String, dynamic>? body,
     FormData? formData,
-    bool? hasToken,
+    String? token,
   }) async {
     try {
-      await setHeaders();
+      await setHeaders(token: token);
       final response = await _dio.patch(
         path,
         queryParameters: queryParams,
