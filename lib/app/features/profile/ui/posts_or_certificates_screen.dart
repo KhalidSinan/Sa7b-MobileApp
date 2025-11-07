@@ -13,6 +13,8 @@ import 'package:sa7b/core/routing/routes.dart';
 import 'package:sa7b/core/widgets/loading_widget.dart';
 import '../../../../core/utils/imports_manager.dart';
 import '../data/models/posts/edit_post_args.dart';
+import '../data/models/posts/posts_list_response.dart';
+import '../logic/cubit/certificates/certificates_list_cubit.dart';
 import 'widgets/posts_or_certificates/selected_subjects_widget.dart';
 import 'widgets/posts_or_certificates/subjects_dialog.dart';
 import 'widgets/profile/option_for_edit_or_delete_post.dart';
@@ -68,7 +70,13 @@ class _PostsOrCertificatesScreenState extends State<PostsOrCertificatesScreen> {
 
   Widget _buildBody() {
     return RefreshIndicator(
-      onRefresh: () async => context.read<PostsListCubit>().posts(),
+      onRefresh: () async {
+        if (widget.contentType == AppStrings.posts) {
+          context.read<PostsListCubit>().posts();
+        } else if (widget.contentType == AppStrings.certificate) {
+          context.read<CertificatesListCubit>().certificates();
+        }
+      },
       child: SizedBox(
         height: double.infinity.h,
         width: double.infinity.w,
@@ -98,109 +106,169 @@ class _PostsOrCertificatesScreenState extends State<PostsOrCertificatesScreen> {
   }
 
   Widget _builBlocConsumer() {
-    return BlocConsumer<PostsListCubit, PostsListState>(
-      listener: (context, state) {
-        state.whenOrNull(
-          deleted: (res) {
-            WidgetsBinding.instance.addPostFrameCallback((_) {
+    if (widget.contentType == AppStrings.posts) {
+      return BlocConsumer<PostsListCubit, PostsListState>(
+        listener: (context, state) {
+          state.whenOrNull(
+            deleted: (res) {
+              WidgetsBinding.instance.addPostFrameCallback((_) {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(
+                    content: Row(
+                      children: [
+                        const Icon(Icons.check_circle, color: AppColors.white),
+                        const SizedBox(width: 8),
+                        Text(res.message),
+                      ],
+                    ),
+                    backgroundColor: AppColors.success,
+                    duration: const Duration(seconds: 2),
+                  ),
+                );
+                context.pop();
+                context.pop();
+                context.read<PostsListCubit>().posts();
+              });
+            },
+            error: (error) {
               ScaffoldMessenger.of(context).showSnackBar(
                 SnackBar(
-                  content: Row(
-                    children: [
-                      const Icon(Icons.check_circle, color: AppColors.white),
-                      const SizedBox(width: 8),
-                      Text(res.message),
-                    ],
-                  ),
-                  backgroundColor: AppColors.success,
-                  duration: const Duration(seconds: 2),
+                  content: Text(error),
+                  backgroundColor: AppColors.error,
                 ),
               );
-              context.pop();
-              context.pop();
-              context.read<PostsListCubit>().posts();
-            });
-          },
-          error: (error) {
-            ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(content: Text(error), backgroundColor: AppColors.error),
-            );
-          },
-        );
-      },
-      builder:
-          (context, state) => state.maybeWhen(
-            loading: () => const LoadingWidget(),
-            success:
-                (posts) => ListView.builder(
-                  shrinkWrap: true,
-                  physics: NeverScrollableScrollPhysics(),
-                  itemCount: posts.data.length,
-                  itemBuilder: (context, index) {
-                    final cubit = context.read<PostsListCubit>();
+            },
+          );
+        },
+        builder:
+            (context, state) => state.maybeWhen(
+              loading: () => const LoadingWidget(),
+              success:
+                  (posts) => ListView.builder(
+                    shrinkWrap: true,
+                    physics: NeverScrollableScrollPhysics(),
+                    itemCount: posts.data.length,
+                    itemBuilder: (context, index) {
+                      final cubit = context.read<PostsListCubit>();
 
-                    return PostOrCertificateCard(
-                      userName: posts.data[index].studentName.toString(),
-                      content: posts.data[index].description.toString(),
-                      date:
-                          posts.data[index].files.isNotEmpty
-                              ? posts.data[index].files.last.createdAt
-                              : DateTime.now().toString(),
-                      onShowPopupMenu: () {
-                        onMoreOptionsPressed(
-                          context: context,
-                          onPressedDelete: () {
-                            cubit.deletePost(posts.data[index].id);
-                          },
-                          onPressedEdit: () {
-                            final files = posts.data[index].files;
+                      return PostOrCertificateCard(
+                        userName: posts.data[index].studentName.toString(),
+                        content: posts.data[index].description.toString(),
+                        date:
+                            posts.data[index].files.isNotEmpty
+                                ? posts.data[index].files.last.createdAt
+                                : DateTime.now().toString(),
+                        onShowPopupMenu: () {
+                          onMoreOptionsPressed(
+                            context: context,
+                            onPressedDelete: () {
+                              cubit.deletePost(posts.data[index].id);
+                            },
+                            onPressedEdit: () {
+                              final files = posts.data[index].files;
 
-                            File? imageFile;
-                            File? videoFile;
+                              File? imageFile;
+                              File? videoFile;
 
-                            // String buildFullUrl(String path) {
-                            //   return path.startsWith('http')
-                            //       ? path
-                            //       : 'http://10.0.2.2:8000/$path';
-                            // }
+                              // String buildFullUrl(String path) {
+                              //   return path.startsWith('http')
+                              //       ? path
+                              //       : 'http://10.0.2.2:8000/$path';
+                              // }
 
-                            for (final fileObj in files) {
-                              final fileUrl = fileObj.file;
+                              for (final fileObj in files) {
+                                final fileUrl = fileObj.file;
 
-                              if (cubit.isImage(fileUrl)) {
-                                imageFile = File(fileUrl);
-                              } else if (cubit.isVideo(fileUrl)) {
-                                videoFile = File(fileUrl);
+                                if (cubit.isImage(fileUrl)) {
+                                  imageFile = File(fileUrl);
+                                } else if (cubit.isVideo(fileUrl)) {
+                                  videoFile = File(fileUrl);
+                                }
                               }
-                            }
 
-                            context.pushNamed(
-                              Routes.editPost,
-                              arguments: EditPostArgs(
-                                id: posts.data[index].id,
-                                title: posts.data[index].title,
-                                description: posts.data[index].description,
-                                visibility: posts.data[index].visibility,
-                                imageFile: imageFile,
-                                videoFile: videoFile,
-                              ),
-                            );
-                          },
-                        );
-                      },
-                      isOwner: widget.isOwner,
-                      attachmentPath:
-                          cubit.getAttachmentInfo(posts, index)['path'],
-                      attachmentType:
-                          cubit.getAttachmentInfo(posts, index)['type'],
-                    );
-                  },
+                              context.pushNamed(
+                                Routes.editPost,
+                                arguments: EditPostArgs(
+                                  id: posts.data[index].id,
+                                  title: posts.data[index].title,
+                                  description: posts.data[index].description,
+                                  visibility: posts.data[index].visibility,
+                                  imageFile: imageFile,
+                                  videoFile: videoFile,
+                                ),
+                              );
+                            },
+                          );
+                        },
+                        isOwner: widget.isOwner,
+                        attachmentPath:
+                            cubit.getAttachmentInfo(posts, index)['path'],
+                        attachmentType:
+                            cubit.getAttachmentInfo(posts, index)['type'],
+                      );
+                    },
+                  ),
+              error:
+                  (error) => Center(child: Text('Error on Fetch Posts $error')),
+              orElse: () => Center(child: Text('No Posts Found')),
+            ),
+      );
+    } else {
+      return BlocConsumer<CertificatesListCubit, CertificatesListState>(
+        listener: (context, state) {
+          state.whenOrNull(
+            error: (error) {
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(
+                  content: Text(error),
+                  backgroundColor: AppColors.error,
                 ),
-            error:
-                (error) => Center(child: Text('Error on Fetch Posts $error')),
-            orElse: () => Center(child: Text('No Posts Found')),
-          ),
-    );
+              );
+            },
+          );
+        },
+        builder:
+            (context, state) => state.maybeWhen(
+              loading: () => const LoadingWidget(),
+              success:
+                  (certificates) => ListView.builder(
+                    shrinkWrap: true,
+                    physics: const NeverScrollableScrollPhysics(),
+                    itemCount: certificates.data.length,
+                    itemBuilder: (context, index) {
+                      // final cubit = context.read<CertificatesListCubit>();
+                      return PostOrCertificateCard(
+                        userName: '',
+                        content: certificates.data[index].file,
+                        date: certificates.data[index].createdAt,
+                        onShowPopupMenu: () {
+                          onMoreOptionsPressed(
+                            context: context,
+                            onPressedDelete: () {},
+                            onPressedEdit: () {},
+                          );
+                        },
+                        isOwner: widget.isOwner,
+                        attachmentPath: '',
+                        // cubit.getAttachmentInfo(
+                        //   certificates,
+                        //   index,
+                        // )['path'],
+                        attachmentType: AttachmentType.file,
+                        // cubit.getAttachmentInfo(
+                        //   certificates,
+                        //   index,
+                        // )['type'],
+                      );
+                    },
+                  ),
+              error:
+                  (error) =>
+                      Center(child: Text('Error on Fetch Certificates $error')),
+              orElse: () => const Center(child: Text('No Certificates Found')),
+            ),
+      );
+    }
   }
 
   Widget? _buildFloatingActionButton() {

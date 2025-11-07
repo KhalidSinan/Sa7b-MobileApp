@@ -1,6 +1,7 @@
 import 'package:sa7b/app/features/profile/data/models/edit_profile/edit_profile_request_body.dart';
 import 'package:sa7b/app/features/profile/data/models/edit_profile/edit_profile_response.dart';
 
+import '../../../../../core/domain/error_handler/network_exceptions.dart';
 import '../../../../../core/services/network_info.dart';
 import '../sources/edit_profile_remote_data_source.dart';
 
@@ -37,10 +38,11 @@ class EditProfileRepo {
         );
         return response;
       } catch (e) {
-        throw Exception('Failed to update profile: $e');
+        final exception = NetworkExceptions.getException(e);
+        throw exception;
       }
     } else {
-      throw Exception('No Internet Connection');
+      throw const NetworkExceptions.noInternetConnection();
     }
   }
 }

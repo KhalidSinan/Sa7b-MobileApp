@@ -11,7 +11,10 @@ ProfileResponse _$ProfileResponseFromJson(Map<String, dynamic> json) =>
       success: json['success'] as bool?,
       status: (json['status'] as num?)?.toInt(),
       message: json['message'] as String?,
-      userData: UserData.fromJson(json['data'] as Map<String, dynamic>),
+      userData:
+          json['data'] == null
+              ? null
+              : UserData.fromJson(json['data'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$ProfileResponseToJson(ProfileResponse instance) =>
@@ -23,22 +26,22 @@ Map<String, dynamic> _$ProfileResponseToJson(ProfileResponse instance) =>
     };
 
 UserData _$UserDataFromJson(Map<String, dynamic> json) => UserData(
-  id: (json['id'] as num).toInt(),
-  firstName: json['first_name'] as String,
-  middleName: json['middle_name'] as String,
-  lastName: json['last_name'] as String,
-  username: json['username'] as String,
-  bio: json['bio'] as String,
-  phoneNumber: json['phone_number'] as String,
+  id: (json['id'] as num?)?.toInt(),
+  firstName: json['first_name'] as String?,
+  middleName: json['middle_name'] as String?,
+  lastName: json['last_name'] as String?,
+  username: json['username'] as String?,
+  bio: json['bio'] as String?,
+  phoneNumber: json['phone_number'] as String?,
   image: json['image'] as String?,
-  collegeName: json['college_name'] as String,
-  linkedInAccount: json['linkedIn_account'] as String,
-  facebookAccount: json['facebook_account'] as String,
-  githubAccount: json['github_account'] as String,
-  xAccount: json['x_account'] as String,
+  collegeName: json['college_name'] as String?,
+  linkedInAccount: json['linkedIn_account'] as String?,
+  facebookAccount: json['facebook_account'] as String?,
+  githubAccount: json['github_account'] as String?,
+  xAccount: json['x_account'] as String?,
   skills:
-      (json['skills'] as List<dynamic>)
-          .map((e) => Skill.fromJson(e as Map<String, dynamic>))
+      (json['skills'] as List<dynamic>?)
+          ?.map((e) => Skill.fromJson(e as Map<String, dynamic>))
           .toList(),
   academicYear:
       json['academic_year'] == null
@@ -46,8 +49,8 @@ UserData _$UserDataFromJson(Map<String, dynamic> json) => UserData(
           : AcademicYear.fromJson(
             json['academic_year'] as Map<String, dynamic>,
           ),
-  createdAt: json['created_at'] as String,
-  updatedAt: json['updated_at'] as String,
+  createdAt: json['created_at'] as String?,
+  updatedAt: json['updated_at'] as String?,
 );
 
 Map<String, dynamic> _$UserDataToJson(UserData instance) => <String, dynamic>{
@@ -71,9 +74,9 @@ Map<String, dynamic> _$UserDataToJson(UserData instance) => <String, dynamic>{
 };
 
 Skill _$SkillFromJson(Map<String, dynamic> json) => Skill(
-  id: (json['id'] as num).toInt(),
-  skill: json['skill'] as String,
-  studentId: (json['student_id'] as num).toInt(),
+  id: (json['id'] as num?)?.toInt(),
+  skill: json['skill'] as String?,
+  studentId: (json['student_id'] as num?)?.toInt(),
   createdAt: json['created_at'] as String?,
   updatedAt: json['updated_at'] as String?,
 );
@@ -87,18 +90,16 @@ Map<String, dynamic> _$SkillToJson(Skill instance) => <String, dynamic>{
 };
 
 AcademicYear _$AcademicYearFromJson(Map<String, dynamic> json) => AcademicYear(
-  id: (json['id'] as num).toInt(),
-  year: json['year'] as String,
-  collegeId: (json['college_id'] as num).toInt(),
-  createdAt: json['created_at'] as String,
-  updatedAt: json['updated_at'] as String,
+  id: (json['id'] as num?)?.toInt(),
+  year: (json['year'] as num?)?.toInt(),
+  createdAt: json['created_at'] as String?,
+  updatedAt: json['updated_at'] as String?,
 );
 
 Map<String, dynamic> _$AcademicYearToJson(AcademicYear instance) =>
     <String, dynamic>{
       'id': instance.id,
       'year': instance.year,
-      'college_id': instance.collegeId,
       'created_at': instance.createdAt,
       'updated_at': instance.updatedAt,
     };

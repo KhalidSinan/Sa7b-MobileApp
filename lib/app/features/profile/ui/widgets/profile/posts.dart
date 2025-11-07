@@ -37,7 +37,6 @@ class Posts extends StatelessWidget {
             builder:
                 (context, state) => state.maybeWhen(
                   loading: () => LoadingWidget(),
-
                   success:
                       (postById) => ListView.builder(
                         itemBuilder:
@@ -57,10 +56,7 @@ class Posts extends StatelessWidget {
                             ),
                         itemCount: 1,
                       ),
-
-                  error:
-                      (error) => Center(child: Text('No Posts Found $error')),
-
+                  error: (error) => Center(child: Text(error)),
                   orElse: () => LoadingWidget(),
                 ),
           ),

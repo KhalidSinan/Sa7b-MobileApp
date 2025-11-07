@@ -1,6 +1,8 @@
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
+import 'package:sa7b/app/features/feedbacks/data/repos/feedbacks_repo.dart';
+import 'package:sa7b/app/features/feedbacks/logic/feedbacks/feedbacks_cubit.dart';
 import 'package:sa7b/app/features/profile/data/repos/add_new_post_repo.dart';
 import 'package:sa7b/app/features/profile/data/repos/edit_post_repo.dart';
 import 'package:sa7b/app/features/profile/data/repos/edit_profile_repo.dart';
@@ -9,18 +11,26 @@ import 'package:sa7b/app/features/profile/data/sources/add_new_post_remote_data_
 import 'package:sa7b/app/features/profile/data/sources/edit_post_remote_data_source.dart';
 import 'package:sa7b/app/features/profile/data/sources/edit_profile_remote_data_source.dart';
 import 'package:sa7b/app/features/profile/data/sources/posts_list_remote_data_source.dart';
+import 'package:sa7b/app/features/profile/logic/cubit/certificates/certificates_cubit.dart';
 import 'package:sa7b/app/features/profile/logic/cubit/edit_profile/edit_profile_cubit.dart';
 import 'package:sa7b/app/features/profile/logic/cubit/posts/add_new_post_cubit.dart';
 import 'package:sa7b/app/features/profile/logic/cubit/posts/edit_post_cubit.dart';
 import 'package:sa7b/app/features/profile/logic/cubit/posts/post_by_id_cubit.dart';
 import 'package:sa7b/app/features/profile/logic/cubit/posts/posts_list_cubit.dart';
+import 'package:sa7b/app/features/send_complaint/data/repos/send_complaint_repo.dart';
+import 'package:sa7b/app/features/send_complaint/data/sources/send_complaint_remote_data_source.dart';
 import 'package:sa7b/core/routing/app_router.dart';
 import 'package:sa7b/core/services/network_info.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import 'app/features/feedbacks/data/datasources/feedback_question_remote_data_source.dart';
+import 'app/features/feedbacks/data/datasources/feedbacks_remote_data_source.dart';
+import 'app/features/feedbacks/data/repos/feedback_question_repo.dart';
+import 'app/features/feedbacks/logic/feedback_question/feedback_question_cubit.dart';
 import 'app/features/profile/data/repos/profile_repo.dart';
 import 'app/features/profile/data/sources/profile_remote_data_source.dart';
 import 'app/features/profile/logic/cubit/profile/profile_cubit.dart';
+import 'app/features/send_complaint/logic/cubit/send_complaint_cubit.dart';
 import 'core/services/api_services_impl.dart';
 
 abstract class AppConfig {
@@ -49,6 +59,9 @@ abstract class AppConfig {
     );
     instance.registerFactory<ProfileCubit>(() => ProfileCubit(instance()));
     instance.registerFactory<PostByIdCubit>(() => PostByIdCubit(instance()));
+    instance.registerFactory<CertificatesCubit>(
+      () => CertificatesCubit(instance()),
+    );
     instance.registerFactory<PostsListCubit>(() => PostsListCubit(instance()));
     instance.registerFactory<AddNewPostCubit>(
       () => AddNewPostCubit(instance()),
@@ -102,6 +115,47 @@ abstract class AppConfig {
     );
     instance.registerLazySingleton<EditPostRemoteDataSource>(
       () => EditPostRemoteDataSourceImp(apiServicesImpl: instance()),
+    );
+
+    //! Send Complaint and FeedBacks features
+    // cubits
+    instance.registerFactory<SendComplaintCubit>(
+      () => SendComplaintCubit(instance()),
+    );
+    instance.registerFactory<FeedbacksCubit>(() => FeedbacksCubit(instance()));
+    instance.registerFactory<FeedbackQuestionCubit>(
+      () => FeedbackQuestionCubit(instance()),
+    );
+
+    // repos
+    instance.registerLazySingleton<SendComplaintRepo>(
+      () => SendComplaintRepo(
+        sendComplaintRemoteDataSource: instance(),
+        networkInfo: instance(),
+      ),
+    );
+    instance.registerLazySingleton<FeedbacksRepo>(
+      () => FeedbacksRepo(
+        feedbacksRemoteDataSource: instance(),
+        networkInfo: instance(),
+      ),
+    );
+    instance.registerLazySingleton<FeedbackQuestionRepo>(
+      () => FeedbackQuestionRepo(
+        feedbackQuestionRemoteDataSource: instance(),
+        networkInfo: instance(),
+      ),
+    );
+
+    // data sources
+    instance.registerLazySingleton<SendComplaintRemoteDataSource>(
+      () => SendComplaintRemoteDataSourceImp(apiServicesImpl: instance()),
+    );
+    instance.registerLazySingleton<FeedbacksRemoteDataSource>(
+      () => FeedbacksRemoteDataSourceImp(apiServicesImpl: instance()),
+    );
+    instance.registerLazySingleton<FeedbackQuestionRemoteDataSource>(
+      () => FeedbackQuestionRemoteDataSourceImp(apiServicesImpl: instance()),
     );
   }
 }

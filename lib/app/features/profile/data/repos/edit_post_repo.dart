@@ -1,3 +1,4 @@
+import '../../../../../core/domain/error_handler/network_exceptions.dart';
 import '../../../../../core/services/network_info.dart';
 import '../models/posts/add_post/add_new_post_request_body.dart';
 import '../models/posts/add_post/add_new_post_response.dart';
@@ -28,10 +29,11 @@ class EditPostRepo {
         final response = await editPostRemoteDataSource.editPost(id, edit);
         return response;
       } catch (e) {
-        throw Exception('Failed to Edit Post: $e');
+        final exception = NetworkExceptions.getException(e);
+        throw exception;
       }
     } else {
-      throw Exception('No Internet Connection');
+      throw const NetworkExceptions.noInternetConnection();
     }
   }
 }

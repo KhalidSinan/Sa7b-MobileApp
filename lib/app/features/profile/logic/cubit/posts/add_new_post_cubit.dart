@@ -10,6 +10,8 @@ import 'package:sa7b/app/features/profile/data/repos/add_new_post_repo.dart';
 import 'package:video_player/video_player.dart';
 import 'package:file_picker/file_picker.dart';
 
+import '../../../../../../core/domain/error_handler/network_exceptions.dart';
+
 part '../../states/add_new_post_state.dart';
 part 'add_new_post_cubit.freezed.dart';
 
@@ -59,7 +61,9 @@ class AddNewPostCubit extends Cubit<AddNewPostState> {
       final response = await _addNewPostRepo.addNewPost(request);
       emit(AddNewPostState.success(response));
     } catch (e) {
-      emit(AddNewPostState.error(error: e.toString()));
+      final exception = NetworkExceptions.getException(e);
+      final message = NetworkExceptions.getErrorMessage(exception);
+      emit(AddNewPostState.error(error: message));
     }
   }
 

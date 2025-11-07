@@ -7,23 +7,20 @@ import 'package:sa7b/core/widgets/custom_elevated_button.dart';
 import '../../../../../../core/constants/app_strings.dart';
 import '../../../../../../core/helpers/spacing.dart';
 import '../../../../../../core/utils/imports_manager.dart';
+import '../../../../../../core/widgets/loading_widget.dart';
 
-class ImageAndFollowsWidget extends StatefulWidget {
+class ImageAndFollowsWidget extends StatelessWidget {
   final bool isOwner;
   const ImageAndFollowsWidget({super.key, required this.isOwner});
 
   @override
-  State<ImageAndFollowsWidget> createState() => _ImageAndFollowsWidgetState();
-}
-
-class _ImageAndFollowsWidgetState extends State<ImageAndFollowsWidget> {
-  bool isFollowing = false;
-
-  @override
   Widget build(BuildContext context) {
+    final profileCubit = context.read<ProfileCubit>();
     return BlocBuilder<ProfileCubit, ProfileState>(
       builder:
           (context, state) => state.maybeWhen(
+            loading: () => const LoadingWidget(),
+            error: (error) => Text(error),
             success: (response) {
               return Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -32,15 +29,15 @@ class _ImageAndFollowsWidgetState extends State<ImageAndFollowsWidget> {
                     radius: 50.r,
                     backgroundColor: AppColors.black,
                     backgroundImage:
-                        response.userData.image != null
-                            ? NetworkImage(response.userData.image!)
+                        response.userData?.image != null
+                            ? NetworkImage(response.userData!.image!)
                             : AssetImage(AppImages.defaultProfileImage)
                                 as ImageProvider,
                   ),
                   Column(
                     children: [
                       Text(
-                        '${response.userData.firstName.toString()} ${response.userData.lastName.toString()}',
+                        '${response.userData?.firstName.toString()} ${response.userData?.lastName.toString()}',
                         style: TextStyle(
                           fontSize: AppFontSize.s16,
                           fontFamily: AppFonts.Cairo,
@@ -67,19 +64,28 @@ class _ImageAndFollowsWidgetState extends State<ImageAndFollowsWidget> {
                         ],
                       ),
                       verticalSpace(10),
-                      if (!widget.isOwner)
+                      if (!isOwner)
                         CustomElevatedButton(
-                          onPressed: () {
-                            setState(() {
-                              isFollowing = !isFollowing;
-                            });
+                          onPressed: () async {
+                            final userId = response.userData?.id;
+                            if (profileCubit.isFollowing) {
+                              await profileCubit.unFollowUser(userId!);
+                            } else {
+                              await profileCubit.followUser(userId!);
+                            }
+                            profileCubit.isFollowing =
+                                !profileCubit.isFollowing;
+
+                            profileCubit.profileInfo();
                           },
                           text:
-                              isFollowing
+                              profileCubit.isFollowing
                                   ? AppStrings.followed
                                   : AppStrings.follows,
                           backgroundColor:
-                              isFollowing ? AppColors.grey : AppColors.primary,
+                              profileCubit.isFollowing
+                                  ? AppColors.grey
+                                  : AppColors.primary,
                           textStyle: TextStyle(
                             fontSize: AppFontSize.s14,
                             fontWeight: AppFontWeight.medium,
@@ -93,16 +99,7 @@ class _ImageAndFollowsWidgetState extends State<ImageAndFollowsWidget> {
               );
             },
 
-            orElse:
-                () => Text(
-                  'يرجى الانتظار ...',
-                  style: TextStyle(
-                    fontFamily: AppFonts.Cairo,
-                    fontSize: AppFontSize.s12,
-                    fontWeight: AppFontWeight.medium,
-                    color: AppColors.darkGrey,
-                  ),
-                ),
+            orElse: () => SizedBox.shrink(),
           ),
     );
   }

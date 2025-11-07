@@ -2,7 +2,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:sa7b/app/features/profile/data/models/posts/post_by_id_response.dart';
 
-
+import '../../../../../../core/domain/error_handler/network_exceptions.dart';
 import '../../../data/repos/profile_repo.dart';
 
 part '../../states/post_by_id_state.dart';
@@ -18,7 +18,9 @@ class PostByIdCubit extends Cubit<PostByIdState> {
       final response = await _profileRepo.postById();
       emit(PostByIdState.success(response));
     } catch (e) {
-      emit(PostByIdState.error(error: e.toString()));
+      final exception = NetworkExceptions.getException(e);
+      final message = NetworkExceptions.getErrorMessage(exception);
+      emit(PostByIdState.error(error: message));
     }
   }
 }

@@ -22,6 +22,10 @@ mixin _$ProfileState<T> {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(ProfileResponse profileResponse) success,
+    required TResult Function(
+      FollowAndUnfollowResponse followAndUnfollowResponse,
+    )
+    followAndUnfollowSuccess,
     required TResult Function(String error) error,
   }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -29,6 +33,8 @@ mixin _$ProfileState<T> {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(ProfileResponse profileResponse)? success,
+    TResult? Function(FollowAndUnfollowResponse followAndUnfollowResponse)?
+    followAndUnfollowSuccess,
     TResult? Function(String error)? error,
   }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -36,6 +42,8 @@ mixin _$ProfileState<T> {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(ProfileResponse profileResponse)? success,
+    TResult Function(FollowAndUnfollowResponse followAndUnfollowResponse)?
+    followAndUnfollowSuccess,
     TResult Function(String error)? error,
     required TResult orElse(),
   }) => throw _privateConstructorUsedError;
@@ -44,6 +52,8 @@ mixin _$ProfileState<T> {
     required TResult Function(_Initial<T> value) initial,
     required TResult Function(Loading<T> value) loading,
     required TResult Function(Success<T> value) success,
+    required TResult Function(FollowAndUnfollowSuccess<T> value)
+    followAndUnfollowSuccess,
     required TResult Function(Error<T> value) error,
   }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -51,6 +61,8 @@ mixin _$ProfileState<T> {
     TResult? Function(_Initial<T> value)? initial,
     TResult? Function(Loading<T> value)? loading,
     TResult? Function(Success<T> value)? success,
+    TResult? Function(FollowAndUnfollowSuccess<T> value)?
+    followAndUnfollowSuccess,
     TResult? Function(Error<T> value)? error,
   }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -58,6 +70,8 @@ mixin _$ProfileState<T> {
     TResult Function(_Initial<T> value)? initial,
     TResult Function(Loading<T> value)? loading,
     TResult Function(Success<T> value)? success,
+    TResult Function(FollowAndUnfollowSuccess<T> value)?
+    followAndUnfollowSuccess,
     TResult Function(Error<T> value)? error,
     required TResult orElse(),
   }) => throw _privateConstructorUsedError;
@@ -131,6 +145,10 @@ class _$InitialImpl<T> implements _Initial<T> {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(ProfileResponse profileResponse) success,
+    required TResult Function(
+      FollowAndUnfollowResponse followAndUnfollowResponse,
+    )
+    followAndUnfollowSuccess,
     required TResult Function(String error) error,
   }) {
     return initial();
@@ -142,6 +160,8 @@ class _$InitialImpl<T> implements _Initial<T> {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(ProfileResponse profileResponse)? success,
+    TResult? Function(FollowAndUnfollowResponse followAndUnfollowResponse)?
+    followAndUnfollowSuccess,
     TResult? Function(String error)? error,
   }) {
     return initial?.call();
@@ -153,6 +173,8 @@ class _$InitialImpl<T> implements _Initial<T> {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(ProfileResponse profileResponse)? success,
+    TResult Function(FollowAndUnfollowResponse followAndUnfollowResponse)?
+    followAndUnfollowSuccess,
     TResult Function(String error)? error,
     required TResult orElse(),
   }) {
@@ -168,6 +190,8 @@ class _$InitialImpl<T> implements _Initial<T> {
     required TResult Function(_Initial<T> value) initial,
     required TResult Function(Loading<T> value) loading,
     required TResult Function(Success<T> value) success,
+    required TResult Function(FollowAndUnfollowSuccess<T> value)
+    followAndUnfollowSuccess,
     required TResult Function(Error<T> value) error,
   }) {
     return initial(this);
@@ -179,6 +203,8 @@ class _$InitialImpl<T> implements _Initial<T> {
     TResult? Function(_Initial<T> value)? initial,
     TResult? Function(Loading<T> value)? loading,
     TResult? Function(Success<T> value)? success,
+    TResult? Function(FollowAndUnfollowSuccess<T> value)?
+    followAndUnfollowSuccess,
     TResult? Function(Error<T> value)? error,
   }) {
     return initial?.call(this);
@@ -190,6 +216,8 @@ class _$InitialImpl<T> implements _Initial<T> {
     TResult Function(_Initial<T> value)? initial,
     TResult Function(Loading<T> value)? loading,
     TResult Function(Success<T> value)? success,
+    TResult Function(FollowAndUnfollowSuccess<T> value)?
+    followAndUnfollowSuccess,
     TResult Function(Error<T> value)? error,
     required TResult orElse(),
   }) {
@@ -250,6 +278,10 @@ class _$LoadingImpl<T> implements Loading<T> {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(ProfileResponse profileResponse) success,
+    required TResult Function(
+      FollowAndUnfollowResponse followAndUnfollowResponse,
+    )
+    followAndUnfollowSuccess,
     required TResult Function(String error) error,
   }) {
     return loading();
@@ -261,6 +293,8 @@ class _$LoadingImpl<T> implements Loading<T> {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(ProfileResponse profileResponse)? success,
+    TResult? Function(FollowAndUnfollowResponse followAndUnfollowResponse)?
+    followAndUnfollowSuccess,
     TResult? Function(String error)? error,
   }) {
     return loading?.call();
@@ -272,6 +306,8 @@ class _$LoadingImpl<T> implements Loading<T> {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(ProfileResponse profileResponse)? success,
+    TResult Function(FollowAndUnfollowResponse followAndUnfollowResponse)?
+    followAndUnfollowSuccess,
     TResult Function(String error)? error,
     required TResult orElse(),
   }) {
@@ -287,6 +323,8 @@ class _$LoadingImpl<T> implements Loading<T> {
     required TResult Function(_Initial<T> value) initial,
     required TResult Function(Loading<T> value) loading,
     required TResult Function(Success<T> value) success,
+    required TResult Function(FollowAndUnfollowSuccess<T> value)
+    followAndUnfollowSuccess,
     required TResult Function(Error<T> value) error,
   }) {
     return loading(this);
@@ -298,6 +336,8 @@ class _$LoadingImpl<T> implements Loading<T> {
     TResult? Function(_Initial<T> value)? initial,
     TResult? Function(Loading<T> value)? loading,
     TResult? Function(Success<T> value)? success,
+    TResult? Function(FollowAndUnfollowSuccess<T> value)?
+    followAndUnfollowSuccess,
     TResult? Function(Error<T> value)? error,
   }) {
     return loading?.call(this);
@@ -309,6 +349,8 @@ class _$LoadingImpl<T> implements Loading<T> {
     TResult Function(_Initial<T> value)? initial,
     TResult Function(Loading<T> value)? loading,
     TResult Function(Success<T> value)? success,
+    TResult Function(FollowAndUnfollowSuccess<T> value)?
+    followAndUnfollowSuccess,
     TResult Function(Error<T> value)? error,
     required TResult orElse(),
   }) {
@@ -397,6 +439,10 @@ class _$SuccessImpl<T> implements Success<T> {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(ProfileResponse profileResponse) success,
+    required TResult Function(
+      FollowAndUnfollowResponse followAndUnfollowResponse,
+    )
+    followAndUnfollowSuccess,
     required TResult Function(String error) error,
   }) {
     return success(profileResponse);
@@ -408,6 +454,8 @@ class _$SuccessImpl<T> implements Success<T> {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(ProfileResponse profileResponse)? success,
+    TResult? Function(FollowAndUnfollowResponse followAndUnfollowResponse)?
+    followAndUnfollowSuccess,
     TResult? Function(String error)? error,
   }) {
     return success?.call(profileResponse);
@@ -419,6 +467,8 @@ class _$SuccessImpl<T> implements Success<T> {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(ProfileResponse profileResponse)? success,
+    TResult Function(FollowAndUnfollowResponse followAndUnfollowResponse)?
+    followAndUnfollowSuccess,
     TResult Function(String error)? error,
     required TResult orElse(),
   }) {
@@ -434,6 +484,8 @@ class _$SuccessImpl<T> implements Success<T> {
     required TResult Function(_Initial<T> value) initial,
     required TResult Function(Loading<T> value) loading,
     required TResult Function(Success<T> value) success,
+    required TResult Function(FollowAndUnfollowSuccess<T> value)
+    followAndUnfollowSuccess,
     required TResult Function(Error<T> value) error,
   }) {
     return success(this);
@@ -445,6 +497,8 @@ class _$SuccessImpl<T> implements Success<T> {
     TResult? Function(_Initial<T> value)? initial,
     TResult? Function(Loading<T> value)? loading,
     TResult? Function(Success<T> value)? success,
+    TResult? Function(FollowAndUnfollowSuccess<T> value)?
+    followAndUnfollowSuccess,
     TResult? Function(Error<T> value)? error,
   }) {
     return success?.call(this);
@@ -456,6 +510,8 @@ class _$SuccessImpl<T> implements Success<T> {
     TResult Function(_Initial<T> value)? initial,
     TResult Function(Loading<T> value)? loading,
     TResult Function(Success<T> value)? success,
+    TResult Function(FollowAndUnfollowSuccess<T> value)?
+    followAndUnfollowSuccess,
     TResult Function(Error<T> value)? error,
     required TResult orElse(),
   }) {
@@ -477,6 +533,184 @@ abstract class Success<T> implements ProfileState<T> {
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SuccessImplCopyWith<T, _$SuccessImpl<T>> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$FollowAndUnfollowSuccessImplCopyWith<T, $Res> {
+  factory _$$FollowAndUnfollowSuccessImplCopyWith(
+    _$FollowAndUnfollowSuccessImpl<T> value,
+    $Res Function(_$FollowAndUnfollowSuccessImpl<T>) then,
+  ) = __$$FollowAndUnfollowSuccessImplCopyWithImpl<T, $Res>;
+  @useResult
+  $Res call({FollowAndUnfollowResponse followAndUnfollowResponse});
+}
+
+/// @nodoc
+class __$$FollowAndUnfollowSuccessImplCopyWithImpl<T, $Res>
+    extends
+        _$ProfileStateCopyWithImpl<T, $Res, _$FollowAndUnfollowSuccessImpl<T>>
+    implements _$$FollowAndUnfollowSuccessImplCopyWith<T, $Res> {
+  __$$FollowAndUnfollowSuccessImplCopyWithImpl(
+    _$FollowAndUnfollowSuccessImpl<T> _value,
+    $Res Function(_$FollowAndUnfollowSuccessImpl<T>) _then,
+  ) : super(_value, _then);
+
+  /// Create a copy of ProfileState
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({Object? followAndUnfollowResponse = null}) {
+    return _then(
+      _$FollowAndUnfollowSuccessImpl<T>(
+        null == followAndUnfollowResponse
+            ? _value.followAndUnfollowResponse
+            : followAndUnfollowResponse // ignore: cast_nullable_to_non_nullable
+                as FollowAndUnfollowResponse,
+      ),
+    );
+  }
+}
+
+/// @nodoc
+
+class _$FollowAndUnfollowSuccessImpl<T> implements FollowAndUnfollowSuccess<T> {
+  const _$FollowAndUnfollowSuccessImpl(this.followAndUnfollowResponse);
+
+  @override
+  final FollowAndUnfollowResponse followAndUnfollowResponse;
+
+  @override
+  String toString() {
+    return 'ProfileState<$T>.followAndUnfollowSuccess(followAndUnfollowResponse: $followAndUnfollowResponse)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$FollowAndUnfollowSuccessImpl<T> &&
+            (identical(
+                  other.followAndUnfollowResponse,
+                  followAndUnfollowResponse,
+                ) ||
+                other.followAndUnfollowResponse == followAndUnfollowResponse));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, followAndUnfollowResponse);
+
+  /// Create a copy of ProfileState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$FollowAndUnfollowSuccessImplCopyWith<T, _$FollowAndUnfollowSuccessImpl<T>>
+  get copyWith => __$$FollowAndUnfollowSuccessImplCopyWithImpl<
+    T,
+    _$FollowAndUnfollowSuccessImpl<T>
+  >(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(ProfileResponse profileResponse) success,
+    required TResult Function(
+      FollowAndUnfollowResponse followAndUnfollowResponse,
+    )
+    followAndUnfollowSuccess,
+    required TResult Function(String error) error,
+  }) {
+    return followAndUnfollowSuccess(followAndUnfollowResponse);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? loading,
+    TResult? Function(ProfileResponse profileResponse)? success,
+    TResult? Function(FollowAndUnfollowResponse followAndUnfollowResponse)?
+    followAndUnfollowSuccess,
+    TResult? Function(String error)? error,
+  }) {
+    return followAndUnfollowSuccess?.call(followAndUnfollowResponse);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(ProfileResponse profileResponse)? success,
+    TResult Function(FollowAndUnfollowResponse followAndUnfollowResponse)?
+    followAndUnfollowSuccess,
+    TResult Function(String error)? error,
+    required TResult orElse(),
+  }) {
+    if (followAndUnfollowSuccess != null) {
+      return followAndUnfollowSuccess(followAndUnfollowResponse);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial<T> value) initial,
+    required TResult Function(Loading<T> value) loading,
+    required TResult Function(Success<T> value) success,
+    required TResult Function(FollowAndUnfollowSuccess<T> value)
+    followAndUnfollowSuccess,
+    required TResult Function(Error<T> value) error,
+  }) {
+    return followAndUnfollowSuccess(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial<T> value)? initial,
+    TResult? Function(Loading<T> value)? loading,
+    TResult? Function(Success<T> value)? success,
+    TResult? Function(FollowAndUnfollowSuccess<T> value)?
+    followAndUnfollowSuccess,
+    TResult? Function(Error<T> value)? error,
+  }) {
+    return followAndUnfollowSuccess?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial<T> value)? initial,
+    TResult Function(Loading<T> value)? loading,
+    TResult Function(Success<T> value)? success,
+    TResult Function(FollowAndUnfollowSuccess<T> value)?
+    followAndUnfollowSuccess,
+    TResult Function(Error<T> value)? error,
+    required TResult orElse(),
+  }) {
+    if (followAndUnfollowSuccess != null) {
+      return followAndUnfollowSuccess(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class FollowAndUnfollowSuccess<T> implements ProfileState<T> {
+  const factory FollowAndUnfollowSuccess(
+    final FollowAndUnfollowResponse followAndUnfollowResponse,
+  ) = _$FollowAndUnfollowSuccessImpl<T>;
+
+  FollowAndUnfollowResponse get followAndUnfollowResponse;
+
+  /// Create a copy of ProfileState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$FollowAndUnfollowSuccessImplCopyWith<T, _$FollowAndUnfollowSuccessImpl<T>>
+  get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -553,6 +787,10 @@ class _$ErrorImpl<T> implements Error<T> {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(ProfileResponse profileResponse) success,
+    required TResult Function(
+      FollowAndUnfollowResponse followAndUnfollowResponse,
+    )
+    followAndUnfollowSuccess,
     required TResult Function(String error) error,
   }) {
     return error(this.error);
@@ -564,6 +802,8 @@ class _$ErrorImpl<T> implements Error<T> {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(ProfileResponse profileResponse)? success,
+    TResult? Function(FollowAndUnfollowResponse followAndUnfollowResponse)?
+    followAndUnfollowSuccess,
     TResult? Function(String error)? error,
   }) {
     return error?.call(this.error);
@@ -575,6 +815,8 @@ class _$ErrorImpl<T> implements Error<T> {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(ProfileResponse profileResponse)? success,
+    TResult Function(FollowAndUnfollowResponse followAndUnfollowResponse)?
+    followAndUnfollowSuccess,
     TResult Function(String error)? error,
     required TResult orElse(),
   }) {
@@ -590,6 +832,8 @@ class _$ErrorImpl<T> implements Error<T> {
     required TResult Function(_Initial<T> value) initial,
     required TResult Function(Loading<T> value) loading,
     required TResult Function(Success<T> value) success,
+    required TResult Function(FollowAndUnfollowSuccess<T> value)
+    followAndUnfollowSuccess,
     required TResult Function(Error<T> value) error,
   }) {
     return error(this);
@@ -601,6 +845,8 @@ class _$ErrorImpl<T> implements Error<T> {
     TResult? Function(_Initial<T> value)? initial,
     TResult? Function(Loading<T> value)? loading,
     TResult? Function(Success<T> value)? success,
+    TResult? Function(FollowAndUnfollowSuccess<T> value)?
+    followAndUnfollowSuccess,
     TResult? Function(Error<T> value)? error,
   }) {
     return error?.call(this);
@@ -612,6 +858,8 @@ class _$ErrorImpl<T> implements Error<T> {
     TResult Function(_Initial<T> value)? initial,
     TResult Function(Loading<T> value)? loading,
     TResult Function(Success<T> value)? success,
+    TResult Function(FollowAndUnfollowSuccess<T> value)?
+    followAndUnfollowSuccess,
     TResult Function(Error<T> value)? error,
     required TResult orElse(),
   }) {

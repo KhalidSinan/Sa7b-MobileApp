@@ -7,6 +7,8 @@ import 'package:image_picker/image_picker.dart';
 import 'package:sa7b/app/features/profile/data/models/edit_profile/edit_profile_request_body.dart';
 import 'package:sa7b/app/features/profile/data/repos/edit_profile_repo.dart';
 
+import '../../../../../../core/domain/error_handler/network_exceptions.dart';
+
 part '../../states/edit_profile_state.dart';
 part 'edit_profile_cubit.freezed.dart';
 
@@ -60,7 +62,9 @@ class EditProfileCubit extends Cubit<EditProfileState> {
 
       emit(EditProfileState.success(response.message));
     } catch (e) {
-      emit(EditProfileState.error(error: e.toString()));
+      final exception = NetworkExceptions.getException(e);
+      final message = NetworkExceptions.getErrorMessage(exception);
+      emit(EditProfileState.error(error: message));
     }
   }
 

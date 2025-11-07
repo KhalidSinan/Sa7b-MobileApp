@@ -38,33 +38,35 @@ class InfoCard extends StatelessWidget {
                             infoRow(
                               label: AppStrings.linkedIn,
                               value:
-                                  userData.userData.linkedInAccount.toString(),
+                                  userData.userData?.linkedInAccount.toString(),
                             ),
                             verticalSpace(8),
                             infoRow(
                               label: AppStrings.facebook,
                               value:
-                                  userData.userData.facebookAccount.toString(),
+                                  userData.userData?.facebookAccount.toString(),
                             ),
                             verticalSpace(8),
                             infoRow(
                               label: AppStrings.gitHub,
-                              value: userData.userData.githubAccount.toString(),
+                              value: userData.userData?.githubAccount.toString(),
                             ),
                             verticalSpace(8),
                             infoRow(
                               label: AppStrings.xAccount,
-                              value: userData.userData.xAccount.toString(),
+                              value: userData.userData?.xAccount.toString(),
                             ),
                             verticalSpace(8),
                             infoRow(
                               label: AppStrings.acadimicYear,
-                              value: userData.userData.academicYear!.year.toString(),
+                              value:
+                                  userData.userData?.academicYear?.year
+                                      .toString(),
                             ),
                             verticalSpace(8),
                             infoRow(
                               label: AppStrings.college,
-                              value: userData.userData.collegeName.toString(),
+                              value: userData.userData?.collegeName.toString(),
                             ),
                           ],
                         ),
@@ -85,7 +87,7 @@ class InfoCard extends StatelessWidget {
     );
   }
 
-  Widget infoRow({@required String? label, required String value}) {
+  Widget infoRow({@required String? label, String? value}) {
     bool isUrl(String text) {
       final urlPattern = RegExp(
         r'^(https?:\/\/)?([\w\-]+\.)+[\w]{2,}(\/\S*)?$',
@@ -94,14 +96,14 @@ class InfoCard extends StatelessWidget {
       return urlPattern.hasMatch(text);
     }
 
-    Widget buildValueWidget(String value) {
-      if (isUrl(value)) {
+    Widget buildValueWidget(String? value) {
+      if (isUrl(value ?? '')) {
         final shortened =
-            value.length > 20 ? '${value.substring(0, 20)}...' : value;
+            (value?.length ?? 0) > 20 ? '${value?.substring(0, 20)}...' : value;
 
         return InkWell(
           onTap: () async {
-            final String cleanedValue = value.trim();
+            final String cleanedValue = value?.trim() ?? " ";
             final String fullUrl =
                 cleanedValue.startsWith("http")
                     ? cleanedValue
@@ -112,7 +114,7 @@ class InfoCard extends StatelessWidget {
             }
           },
           child: Text(
-            shortened,
+            shortened ?? "",
             style: const TextStyle(
               color: AppColors.primary,
               decoration: TextDecoration.underline,
@@ -122,9 +124,9 @@ class InfoCard extends StatelessWidget {
         );
       } else {
         final displayText =
-            value.length > 30 ? '${value.substring(0, 30)}...' : value;
+            (value?.length ?? 0) > 30 ? '${value?.substring(0, 30)}...' : value;
         return Text(
-          displayText,
+          displayText ?? " ",
           style: TextStyle(
             fontFamily: AppFonts.Cairo,
             fontSize: AppFontSize.s12,

@@ -3,6 +3,7 @@ import 'package:sa7b/app/features/profile/data/models/posts/delete_post/delete_p
 import 'package:sa7b/app/features/profile/data/models/posts/posts_list_response.dart';
 import 'package:sa7b/core/data/sources/remote/app_url.dart';
 
+import '../../../../../core/domain/error_handler/network_exceptions.dart';
 import '../../../../../core/services/api_services_impl.dart';
 
 abstract class PostsListRemoteDataSource {
@@ -18,24 +19,24 @@ class PostsListRemoteDataSourceImp implements PostsListRemoteDataSource {
   @override
   Future<PostsListResponse> posts() async {
     try {
-      final posts = await apiServicesImpl.get(
-        AppUrl.postById,
-      );
+      final posts = await apiServicesImpl.get(AppUrl.postById);
       return PostsListResponse.fromJson(posts);
     } on DioException catch (e) {
-      throw Exception(e.toString());
+      throw NetworkExceptions.getException(e);
+    } catch (e) {
+      throw NetworkExceptions.getException(e);
     }
   }
 
   @override
   Future<DeletePostResponse> deletePost(int id) async {
     try {
-      final response = await apiServicesImpl.delete(
-        '${AppUrl.postById}/$id',
-      );
+      final response = await apiServicesImpl.delete('${AppUrl.postById}/$id');
       return DeletePostResponse.fromJson(response);
     } on DioException catch (e) {
-      throw Exception(e.toString());
+      throw NetworkExceptions.getException(e);
+    } catch (e) {
+      throw NetworkExceptions.getException(e);
     }
   }
 }

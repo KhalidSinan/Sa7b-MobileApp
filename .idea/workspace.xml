@@ -10,13 +10,65 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="83d2546b-3fbf-4cf1-ba59-93abea007bb1" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_SDK.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_SDK.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/features/feedbacks/ui/feedbacks_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/feedbacks/ui/feedbacks_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.vscode/settings.json" beforeDir="false" afterPath="$PROJECT_DIR$/.vscode/settings.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/app/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/build.gradle.kts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/sa7b_android.iml" beforeDir="false" afterPath="$PROJECT_DIR$/android/sa7b_android.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/app/features/feedbacks/data/feedbacks.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/app/features/feedbacks/data/feedbacks.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/app/features/feedbacks/ui/feedbacks_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/app/features/feedbacks/ui/feedbacks_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/app/features/profile/data/repos/add_new_post_repo.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/app/features/profile/data/repos/add_new_post_repo.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/app/features/profile/data/repos/edit_post_repo.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/app/features/profile/data/repos/edit_post_repo.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/app/features/profile/data/repos/edit_profile_repo.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/app/features/profile/data/repos/edit_profile_repo.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/app/features/profile/data/repos/posts_list_repo.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/app/features/profile/data/repos/posts_list_repo.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/app/features/profile/data/repos/profile_repo.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/app/features/profile/data/repos/profile_repo.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/app/features/profile/data/sources/add_new_post_remote_data_source.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/app/features/profile/data/sources/add_new_post_remote_data_source.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/app/features/profile/data/sources/edit_post_remote_data_source.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/app/features/profile/data/sources/edit_post_remote_data_source.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/app/features/profile/data/sources/edit_profile_remote_data_source.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/app/features/profile/data/sources/edit_profile_remote_data_source.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/app/features/profile/data/sources/posts_list_remote_data_source.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/app/features/profile/data/sources/posts_list_remote_data_source.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/app/features/profile/data/sources/profile_remote_data_source.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/app/features/profile/data/sources/profile_remote_data_source.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/app/features/profile/logic/cubit/edit_profile/edit_profile_cubit.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/app/features/profile/logic/cubit/edit_profile/edit_profile_cubit.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/app/features/profile/logic/cubit/posts/add_new_post_cubit.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/app/features/profile/logic/cubit/posts/add_new_post_cubit.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/app/features/profile/logic/cubit/posts/edit_post_cubit.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/app/features/profile/logic/cubit/posts/edit_post_cubit.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/app/features/profile/logic/cubit/posts/post_by_id_cubit.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/app/features/profile/logic/cubit/posts/post_by_id_cubit.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/app/features/profile/logic/cubit/posts/posts_list_cubit.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/app/features/profile/logic/cubit/posts/posts_list_cubit.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/app/features/profile/logic/cubit/profile/profile_cubit.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/app/features/profile/logic/cubit/profile/profile_cubit.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/app/features/profile/logic/cubit/profile/profile_cubit.freezed.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/app/features/profile/logic/cubit/profile/profile_cubit.freezed.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/app/features/profile/logic/states/profile_state.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/app/features/profile/logic/states/profile_state.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/app/features/profile/ui/posts_or_certificates_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/app/features/profile/ui/posts_or_certificates_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/app/features/profile/ui/profile_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/app/features/profile/ui/profile_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/app/features/profile/ui/widgets/profile/certificates.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/app/features/profile/ui/widgets/profile/certificates.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/app/features/profile/ui/widgets/profile/image_and_follows_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/app/features/profile/ui/widgets/profile/image_and_follows_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/app/features/profile/ui/widgets/profile/info_card.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/app/features/profile/ui/widgets/profile/info_card.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/app/features/profile/ui/widgets/profile/posts.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/app/features/profile/ui/widgets/profile/posts.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/app/features/send_complaint/data/type.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/app/features/send_complaint/logic/cubit/image_picker_cubit.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/app/features/send_complaint/logic/states/image_picker_state.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/app/features/send_complaint/logic/states/image_picker_state.freezed.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/app/features/send_complaint/ui/send_complaint_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/app/features/send_complaint/ui/send_complaint_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/app/features/send_complaint/ui/widgets/send_complaint_add_media.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/app/features/send_complaint/ui/widgets/send_complaint_add_media.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/app/features/send_complaint/ui/widgets/send_complaint_description.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/app/features/send_complaint/ui/widgets/send_complaint_description.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/app/features/send_complaint/ui/widgets/send_complaint_title.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/app/features/send_complaint/ui/widgets/send_complaint_title.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/app/features/send_complaint/ui/widgets/send_complaint_type.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/app/features/send_complaint/ui/widgets/send_complaint_type.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/app/features/speak_up/speak_up_screen.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/config.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/config.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/core/constants/app_strings.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/core/constants/app_strings.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/core/data/sources/remote/app_url.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/core/data/sources/remote/app_url.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/core/domain/error_handler/network_exceptions.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/core/domain/error_handler/network_exceptions.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/core/routing/app_router.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/core/routing/app_router.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/core/routing/routes.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/core/routing/routes.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ClangdSettings">
+    <option name="formatViaClangd" value="false" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -32,6 +84,9 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 6
+}</component>
   <component name="ProjectId" id="2xmTvVSipAKXxN5gksFM1fyaMk8" />
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
@@ -51,15 +106,35 @@
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
     &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;Dart Command Line App.main.dart.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.readMode.enableVisualFormatting&quot;: &quot;true&quot;,
+    &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
     &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
     &quot;com.android.tools.idea.devicemanager.tab&quot;: &quot;Physical&quot;,
     &quot;dart.analysis.tool.window.visible&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;features/student__profile&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;io.flutter.reload.alreadyRun&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/ASUS/location_app&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/hp/Desktop/Flutter/Sa7b-MobileApp&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;dart.settings&quot;,
     &quot;show.migrate.to.gradle.popup&quot;: &quot;false&quot;
   }
 }</component>
+  <component name="RunManager" selected="Dart Command Line App.main.dart">
+    <configuration name="main.dart" type="DartCommandLineRunConfigurationType" factoryName="Dart Command Line Application" temporary="true" nameIsGenerated="true">
+      <option name="filePath" value="$PROJECT_DIR$/lib/main.dart" />
+      <option name="workingDirectory" value="$PROJECT_DIR$" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Dart Command Line App.main.dart" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">

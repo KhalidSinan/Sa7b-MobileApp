@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:sa7b/core/data/sources/remote/app_url.dart';
 
+import '../../../../../core/domain/error_handler/network_exceptions.dart';
 import '../../../../../core/services/api_services_impl.dart';
 import '../models/edit_profile/edit_profile_request_body.dart';
 import '../models/edit_profile/edit_profile_response.dart';
@@ -69,7 +70,9 @@ class EditProfileRemoteDataSourceImp implements EditProfileRemoteDataSource {
 
       return EditProfileResponse.fromJson(result);
     } on DioException catch (e) {
-      throw Exception(e.toString());
+      throw NetworkExceptions.getException(e);
+    } catch (e) {
+      throw NetworkExceptions.getException(e);
     }
   }
 }

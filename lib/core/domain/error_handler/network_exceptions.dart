@@ -96,7 +96,7 @@ abstract class NetworkExceptions with _$NetworkExceptions implements Exception {
       case 408:
         return const NetworkExceptions.requestTimeout();
       case 422:
-        return NetworkExceptions.unprocessableEntity("${errorModel.message}");
+        return NetworkExceptions.unprocessableEntity("${response}");
       case 500:
         return const NetworkExceptions.internalServerError();
       case 503:

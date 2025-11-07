@@ -27,7 +27,7 @@ class Sa7bApp extends StatelessWidget {
         theme: AppTheme.theme,
         debugShowCheckedModeBanner: false,
         onGenerateRoute: appRouter.generateRoute,
-        initialRoute: Routes.profile,
+        initialRoute: Routes.speakUpScreen,
       ),
     );
   }

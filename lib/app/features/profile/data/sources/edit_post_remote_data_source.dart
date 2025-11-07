@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 
 import '../../../../../core/data/sources/remote/app_url.dart';
+import '../../../../../core/domain/error_handler/network_exceptions.dart';
 import '../../../../../core/services/api_services_impl.dart';
 import '../models/posts/add_post/add_new_post_request_body.dart';
 import '../models/posts/add_post/add_new_post_response.dart';
@@ -47,15 +48,17 @@ class EditPostRemoteDataSourceImp implements EditPostRemoteDataSource {
         if (responses.isNotEmpty) {
           return responses.first;
         } else {
-          throw Exception('Empty response list');
+          throw const NetworkExceptions.unableToProcess();
         }
       } else if (result is Map<String, dynamic>) {
         return AddNewPostResponse.fromJson(result);
       } else {
-        throw Exception('Invalid response format');
+        throw const NetworkExceptions.unableToProcess();
       }
     } on DioException catch (e) {
-      throw Exception(e.toString());
+      throw NetworkExceptions.getException(e);
+    } catch (e) {
+      throw NetworkExceptions.getException(e);
     }
   }
 }

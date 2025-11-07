@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sa7b/app/features/profile/logic/cubit/posts/post_by_id_cubit.dart';
 import 'package:sa7b/app/features/profile/logic/cubit/profile/profile_cubit.dart';
+import 'package:sa7b/core/widgets/loading_widget.dart';
 
 import '../../../../core/constants/app_strings.dart';
 import '../../../../core/helpers/spacing.dart';
@@ -37,7 +38,25 @@ class ProfileScreen extends StatelessWidget {
               child: Column(
                 children: [
                   verticalSpace(10),
-                  ImageAndFollowsWidget(isOwner: isOwner),
+                  BlocListener<ProfileCubit, ProfileState>(
+                    listener: (context, state) {
+                      state.maybeWhen(
+                        loading: () => const LoadingWidget(),
+                        followAndUnfollowSuccess: (response) {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(content: Text(response.message)),
+                          );
+                        },
+                        // error: (error) {
+                        //   ScaffoldMessenger.of(
+                        //     context,
+                        //   ).showSnackBar(SnackBar(content: Text(error)));
+                        // },
+                        orElse: () {},
+                      );
+                    },
+                    child: ImageAndFollowsWidget(isOwner: isOwner),
+                  ),
                   experiences(),
                   InfoCard(isOwner: isOwner),
                   SizedBox(height: 270.h, child: Posts(isOwner: isOwner)),
@@ -58,16 +77,6 @@ class ProfileScreen extends StatelessWidget {
     return BlocBuilder<ProfileCubit, ProfileState>(
       builder:
           (context, state) => state.maybeWhen(
-            loading:
-                () => Text(
-                  'يرجى الانتظار ...',
-                  style: TextStyle(
-                    fontFamily: AppFonts.Cairo,
-                    fontSize: AppFontSize.s12,
-                    fontWeight: AppFontWeight.medium,
-                    color: AppColors.darkGrey,
-                  ),
-                ),
             success:
                 (response) => Padding(
                   padding: EdgeInsets.symmetric(
@@ -76,7 +85,7 @@ class ProfileScreen extends StatelessWidget {
                   ),
                   child: Wrap(
                     children: [
-                      ...response.userData.skills.map(
+                      ...?response.userData!.skills?.map(
                         (skill) => Padding(
                           padding: EdgeInsets.only(bottom: 4.dm),
                           child: Text(
@@ -93,7 +102,8 @@ class ProfileScreen extends StatelessWidget {
                     ],
                   ),
                 ),
-            orElse: () => Center(child: Text('No Experiences')),
+            error: (error) => Text(error),
+            orElse: () => SizedBox.shrink(),
           ),
     );
   }

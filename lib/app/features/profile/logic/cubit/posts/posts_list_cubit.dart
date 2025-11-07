@@ -4,6 +4,8 @@ import 'package:sa7b/app/features/profile/data/models/posts/delete_post/delete_p
 import 'package:sa7b/app/features/profile/data/models/posts/posts_list_response.dart';
 import 'package:sa7b/app/features/profile/data/repos/posts_list_repo.dart';
 
+import '../../../../../../core/domain/error_handler/network_exceptions.dart';
+
 part '../../states/posts_list_state.dart';
 part 'posts_list_cubit.freezed.dart';
 
@@ -17,7 +19,9 @@ class PostsListCubit extends Cubit<PostsListState> {
       final posts = await _postsListRepo.posts();
       emit(PostsListState.success(posts));
     } catch (e) {
-      emit(PostsListState.error(error: e.toString()));
+      final exception = NetworkExceptions.getException(e);
+      final message = NetworkExceptions.getErrorMessage(exception);
+      emit(PostsListState.error(error: message));
     }
   }
 
@@ -58,11 +62,14 @@ class PostsListCubit extends Cubit<PostsListState> {
       final deletePosts = await _postsListRepo.deletePost(id);
       emit(PostsListState.deleted(deletePosts));
     } catch (e) {
-      emit(
-        PostsListState.error(
-          error: "You are not authorized to delete this post.",
-        ),
-      );
+      // emit(
+      //   PostsListState.error(
+      //     error: "You are not authorized to delete this post.",
+      //   ),
+      // );
+      final exception = NetworkExceptions.getException(e);
+      final message = NetworkExceptions.getErrorMessage(exception);
+      emit(PostsListState.error(error: message));
     }
   }
 

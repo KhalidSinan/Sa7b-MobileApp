@@ -58,5 +58,8 @@ class AppStrings {
 
   // my token
   static const String token =
-      "3|FXb8siBvthbhbM5kPty6PPZIrOMiOTdQcw4OvTPvd1e86acd";
+      "92|sgZx27tFtocvJFEkF4nnxxlmFdjXRSKmBvRE7n96e86c7cb6";
+
+  // feedbacks
+  static const String feedbacks = "feedbacks";
 }

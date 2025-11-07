@@ -8,6 +8,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:sa7b/app/features/profile/data/repos/edit_post_repo.dart';
 import 'package:video_player/video_player.dart';
 
+import '../../../../../../core/domain/error_handler/network_exceptions.dart';
 import '../../../data/models/posts/add_post/add_new_post_request_body.dart';
 import '../../../data/models/posts/add_post/add_new_post_response.dart';
 
@@ -84,7 +85,9 @@ class EditPostCubit extends Cubit<EditPostState> {
       final response = await _editPostRepo.editPost(id, request);
       emit(EditPostState.success(response));
     } catch (e) {
-      emit(EditPostState.error(error: e.toString()));
+      final exception = NetworkExceptions.getException(e);
+      final message = NetworkExceptions.getErrorMessage(exception);
+      emit(EditPostState.error(error: message));
     }
   }
 

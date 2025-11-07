@@ -3,6 +3,8 @@ import 'package:sa7b/app/features/profile/data/models/posts/add_post/add_new_pos
 import 'package:sa7b/app/features/profile/data/sources/add_new_post_remote_data_source.dart';
 import 'package:sa7b/core/services/network_info.dart';
 
+import '../../../../../core/domain/error_handler/network_exceptions.dart';
+
 class AddNewPostRepo {
   final AddNewPostRemoteDataSource addNewPostRemoteDataSource;
   final NetworkInfo networkInfo;
@@ -18,21 +20,20 @@ class AddNewPostRepo {
     final AddNewPostRequestBody addPost = AddNewPostRequestBody(
       title: addNewPost.title,
       description: addNewPost.description,
-      visibility : addNewPost.visibility,
+      visibility: addNewPost.visibility,
       files: addNewPost.files,
     );
 
     if (await networkInfo.isConnected) {
       try {
-        final response = await addNewPostRemoteDataSource.addNewPost(
-          addPost,
-        );
+        final response = await addNewPostRemoteDataSource.addNewPost(addPost);
         return response;
       } catch (e) {
-        throw Exception('Failed to Add Post: $e');
+        final exception = NetworkExceptions.getException(e);
+        throw exception;
       }
     } else {
-      throw Exception('No Internet Connection');
+      throw const NetworkExceptions.noInternetConnection();
     }
   }
 }

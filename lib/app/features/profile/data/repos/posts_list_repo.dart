@@ -2,6 +2,7 @@ import 'package:sa7b/app/features/profile/data/models/posts/delete_post/delete_p
 import 'package:sa7b/app/features/profile/data/models/posts/posts_list_response.dart';
 import 'package:sa7b/app/features/profile/data/sources/posts_list_remote_data_source.dart';
 
+import '../../../../../core/domain/error_handler/network_exceptions.dart';
 import '../../../../../core/services/network_info.dart';
 
 class PostsListRepo {
@@ -19,10 +20,11 @@ class PostsListRepo {
         final response = await postsListRemoteDataSource.posts();
         return response;
       } catch (e) {
-        throw Exception('Failed to get Posts: $e');
+        final exception = NetworkExceptions.getException(e);
+        throw exception;
       }
     } else {
-      throw Exception('No Internet Connection');
+      throw const NetworkExceptions.noInternetConnection();
     }
   }
 
@@ -32,12 +34,11 @@ class PostsListRepo {
         final response = await postsListRemoteDataSource.deletePost(id);
         return response;
       } catch (e) {
-        throw Exception('Failed to Delete Post: $e');
+        final exception = NetworkExceptions.getException(e);
+        throw exception;
       }
     } else {
-      throw Exception('No Internet Connection');
+      throw const NetworkExceptions.noInternetConnection();
     }
   }
-
-  
 }
